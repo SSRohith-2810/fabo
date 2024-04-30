@@ -1,0 +1,292 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background: linear-gradient(to right, #ef4d79, #3d1b63);
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+
+.addinvoice-btn-p
+{
+	/*border:2px solid red;*/
+	display:flex;
+	justify-content:flex-end;
+}
+.addinvoice-btn{
+	
+	padding:15px;
+	border-radius:10px;
+	background: linear-gradient(to left, #ef4d79, #3d1b63);
+	color:#fff;
+	font-weight:bold;
+	font-size:medium;
+	 border: 2px solid #fff;
+	 cursor:pointer;
+	
+}
+.addinvoice-btn a{
+	display:flex;
+	background-color:aqua;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px; /* Adjust as needed */
+    height: auto;
+}
+
+.middle-section {
+    background: linear-gradient(to left, #ef4d79, #3d1b63);
+    padding: 50px;
+    margin-top: 70px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    position: relative;
+    height: 62vh;
+    overflow: hidden;
+}
+
+.heading {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color:#fff;
+}
+
+.heading h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.close-btn i{
+    color: #fff;
+}
+.close-btn i:hover{
+    color: #fff;
+    scale: 1.05;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-select {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555;
+    font-size: 14px;
+    outline: none;
+    margin-right: 10px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-bar input[type="search"] {
+    width:98%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555;
+    font-size: 14px;
+    outline: none;
+    padding-right: 40px;
+}
+
+.search-bar i {
+    position: absolute;
+    right: 40px;
+    color: #ef4d79;
+    cursor: pointer;
+}
+.clear-btn{
+    padding: 10px;
+    width: 10%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: medium;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555;
+}
+.table-container {
+    overflow-y: auto;
+    max-height: calc(100% - 20px);
+}
+
+.table-container::-webkit-scrollbar{
+    display: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 2px solid #ddd;
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 15px 5px;
+    border-bottom: 1px solid #3d1b63;
+    text-align: left;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: #3d1b63;
+}
+
+th {
+    background-color: #3d1b63;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 2; /* Higher z-index than the popup */
+}
+
+td {
+    background-color: #fff;
+    position: relative;
+}
+
+.popup {
+    position: absolute;
+    background: linear-gradient(to left, #ef4d79, #3d1b63);
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Increase z-index */
+    display: none;
+    top: -100%; /* Adjust spacing */
+    left: 80%;
+    transform: translateX(-50%);
+    width: 60px;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.popup a {
+    display: block;
+    padding: 5px 0;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.popup a:hover {
+    background: linear-gradient(to right, #ef4d79, #3d1b63);
+    border: 2px solid #fff;
+}
+
+.dataTables_length{
+  display: none;
+  }
+  .dataTables_paginate .paginate_button  {
+    color : white;
+  }
+  .dataTables_paginate .previous {
+  cursor : pointer;
+  text-decoration : underline;
+  }
+  .dataTables_paginate .next {
+    cursor : pointer;
+    text-decoration : underline;
+    }
+.dataTables_info{
+ color : white;
+ text-align :center;
+}
+  .dataTables_filter{
+  display : none;
+  }
+.dataTables_paginate  span a{
+ margin-left : 20px !important;
+ margin-right : 20px !important;
+ cursor : pointer;
+ text-decoration : none;
+
+}
+.dataTables_paginate  span a:hover{
+	text-decoration: underline;
+	 
+}
+.dataTables_paginate{
+	text-align: center;
+	margin-top : 12px;
+}
+
+
+@media (min-width: 768px) {
+/* Adjust the width of the username column */
+th:nth-child(1),
+td:nth-child(1) {
+width: 20%; /* Adjust as needed */
+}
+
+/* Adjust the width of the email column */
+th:nth-child(2),
+td:nth-child(2) {
+width: 20%; /* Adjust as needed */
+}
+
+/* Adjust the width of the access column */
+th:nth-child(4),
+td:nth-child(4) {
+width: 25%; /* Adjust as needed */
+}
+}
+
+@media (max-width: 768px) {
+/* Adjust the width of the username column */
+th:nth-child(1),
+td:nth-child(1) {
+width: 20%; /* Adjust as needed */
+}
+
+/* Adjust the width of the email column */
+th:nth-child(2),
+td:nth-child(2) {
+width: 25%; /* Adjust as needed */
+}
+
+/* Adjust the width of the access column */
+th:nth-child(4),
+td:nth-child(4) {
+width: 30%; /* Adjust as needed */
+}
+}

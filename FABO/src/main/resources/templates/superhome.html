@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/superhome.css}">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--link rel="stylesheet" th:href="@{/css/home.css}"-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>FABO</title>
+</head>
+<body>
+    <div class="main-page">
+        <!-- Side bar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <img th:src="@{/images/mountstring.png}" alt="Your Logo">
+            </div>
+            <div class="sbbuttons">
+                <button id="button1" onclick="toggleSubMenu('submenu1')">Client<br>Management</button>
+                <ul class="submenu" id="submenu1">
+                    <li><a href="addclient">Add Client</a></li>
+                    <li><a href="faboclients">Manage Clients</a></li>
+                </ul>
+
+                <button id="button2" onclick="toggleSubMenu('submenu2 ')">Client User <br>Management</button>
+                <ul class="submenu" id="submenu2">
+                    <li><a href="adduser">Add Client User</a></li>
+                    <li><a href="faboClientUsers">Manage Client Users</a> </li>
+                </ul>
+             
+                <button id="button3" onclick="toggleSubMenu('submenu3')">Admin User <br>Management</button>
+                <ul class="submenu" id="submenu3">
+                    <li><a href="addadmin">Add Admin User</a></li>
+                    <li><a href="faboAdmins">Manage Admin Users</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="dash-btns">
+         		    <li><a href=superadmin.dashboard>SuperAdmin Dashboard</a></li>                 
+                    <li><a href=password id="password">Reset Password</a></li>
+                    <li><a href="logout" id="logout">LogOut</a></li>
+                    
+                    
+            </div>
+            <div class="greeting">
+                <div class="faboimg">
+                    <img th:src="@{/images/mountstring.png}" alt="Your Logo">
+                </div>
+                <div class="text">
+                    <h3>Threads Of Future Technology</h3>
+                </div>              
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="popup2" id="addUserPopup">          
+        <div class="card2">
+            <div class="wrapper2">
+                <div class="title2">Add User</div>
+                <form th:action="@{/add}" th:object="${clientUser}" method="POST">
+                   <div class="user-detail">
+		                    <div class="input-box">      
+		                      
+		                    
+		                     <label for="storeCode" id="mand" >Select StoreCode: <sup style="color:red;">*</sup> </label>
+								<select id="storeCode" name="storeCode" onchange="updateStoreName(this)">
+								    <option value="">Select StoreCode </option>
+								    <!-- Iterate through client entities to populate the select options
+								    <option th:each="client : ${clients}" th:value="${client.storeCode}" th:text="${client.storeCode}" th:attr="data-store-name=${client.storeName}"></option>  -->
+								    <option th:each="client : ${clients}" th:value="${client.storeCode}" th:text="${client.storeCode}" th:attr="data-store-name=${client.storeName}" th:if="${client.activeStatus}"></option>
+								</select>	                  
+		                    </div>
+
+							 <div class="input-box">
+    							<span class="details">Store Name  <sup style="color:red;">*</sup> </span>
+    							<input type="text" id="storename" name="storeName" readonly>
+							</div>
+										 
+
+                             <div class="input-box">
+                                <span class="details">User Name <sup style="color:red;">*</sup> </span>
+                                <input type="text" th:field = "*{userName}" placeholder="Enter User Name" pattern="[a-zA-Z0-9.]*" title="Only alphabets, numbers, and dots are allowed" required>
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Display Name <sup style="color:red;">*</sup> </span>
+                                <input type="text" th:field = "*{displayName}" placeholder="Enter Display Name" required >
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">E-Mail <sup style="color:red;">*</sup> </span>
+                                <input type="email" th:field = "*{email}" placeholder="Enter E-Mail" required >
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Phone Number <sup style="color:red;">*</sup> </span>
+                                <input type="tel" th:field = "*{phoneNumber}" pattern="[6-9]{1}[0-9]{9}" placeholder="Enter Phone Number" oninput="validateNumericInput(this)" required>
+                            </div>
+
+                            <!-- Repeat similar input-box elements for other user details -->
+
+                        </div>
+                        
+                    
+                      <div class="checkbox-container">
+                            <div class="checkbox-wrapper"  id="usercheckbox">
+                              <label class="checkbox-label" for="checkbox1">
+                                <div class="custom-checkbox">
+                                  <input type="checkbox" id="checkbox1" name="roleIds" value="6">
+                                  <div class="checkmark"></div>
+                                </div>
+                                Accounts
+                              </label>
+                            </div>
+                        
+                            <div class="checkbox-wrapper">
+                              <label class="checkbox-label" for="checkbox2">
+                                <div class="custom-checkbox">
+                                  <input type="checkbox" id="checkbox2" name="roleIds" value="7">
+                                  <div class="checkmark"></div>
+                                </div>
+                                Support
+                              </label>
+                            </div>
+                        
+                            <div class="checkbox-wrapper">
+                              <label class="checkbox-label" for="checkbox3">
+                                <div class="custom-checkbox">
+                                  <input type="checkbox" id="checkbox3" name="roleIds" value="8">
+                                  <div class="checkmark"></div>
+                                </div>
+                                Products
+                              </label>
+                            </div>
+                        
+                            <div class="checkbox-wrapper">
+                              <label class="checkbox-label" for="checkbox4">
+                                <div class="custom-checkbox">
+                                  <input type="checkbox" id="checkbox4" name="roleIds" value="9">
+                                  <div class="checkmark"></div>
+                                </div>
+                                Creatives
+                              </label>
+                            </div>
+                          </div>
+                          
+                      <div  class="button2">
+                        <input type="submit" value="Submit">
+                        <div class="close-button">
+                            <button onclick="closePopup2()">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup3" id="addAdminPopup">
+        
+        <div class="card3">
+            <div class="wrapper3">
+                <div class="title3">Add Admin</div>
+               <form th:action="@{/addAdmin}" th:object="${admin}" method="POST">
+                  <div class="user-detail">
+                            <div class="input-box">
+                                <span class="details"> Display Name <sup style="color:red;">*</sup> </span>
+                                <input type="text" th:field="*{displayName}" placeholder="Enter Display Name" required>
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">User Name <sup style="color:red;">*</sup> </span>
+                                <input type="text" th:field="*{userName}" placeholder="Enter User Name" pattern="[a-zA-Z0-9.]*" title="Only alphabets, numbers, and dots are allowed" required>
+                            </div>
+        
+                            <div class="input-box">
+                                <span class="details">E-Mail <sup style="color:red;">*</sup> </span>
+                                <input type="text" th:field="*{email}" placeholder="Enter E-Mail" required>
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Phone Number<sup style="color:red;">*</sup> </span>
+                                <input type="tel" th:field="*{phoneNumber}" pattern="[6-9]{1}[0-9]{9}" placeholder="Enter Phone Number" oninput="validateNumericInput(this)" required>
+                            </div>
+
+                            <div class="checkbox-container">
+                                <div class="checkbox-wrapper">
+                                    <label class="checkbox-label" for="adminCheckbox1">
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" id="adminCheckbox1" name="roleIds" value="2">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                        Accounts
+                                    </label>
+                                </div>
+        
+                                <div class="checkbox-wrapper">
+                                    <label class="checkbox-label" for="adminCheckbox2">
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" id="adminCheckbox2" name="roleIds" value="3">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                        Support
+                                    </label>
+                                </div>
+         
+                                <div class="checkbox-wrapper">
+                                    <label class="checkbox-label" for="adminCheckbox3">
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" id="adminCheckbox3" name="roleIds" value="4">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                        Products
+                                    </label>
+                                </div>
+
+                                <div class="checkbox-wrapper">
+                                    <label class="checkbox-label" for="adminCheckbox4">
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" id="adminCheckbox4" name="roleIds" value="5">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                        Creatives
+                                    </label>
+                                </div>
+        
+                              
+                            </div>
+                        </div>
+                    <div class="button3">
+                        <input type="submit" value="Submit">
+                        <div class="close-button">
+                            <button onclick="closePopup3()">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Add this JavaScript code in your home.js
+function showLoadingSymbol() {
+document.getElementById('loading-symbol').style.display = 'block';
+}
+
+function hideLoadingSymbol() {
+document.getElementById('loading-symbol').style.display = 'none';
+}
+
+// Example: Add these functions to your navigation links or buttons
+function navigateToAnotherPage() {
+showLoadingSymbol(); // Show loading symbol before navigating
+
+// Simulate a delay (you can replace this with your actual navigation logic)
+setTimeout(function () {
+window.location.href = 'clientslist.html'; // Change this to the URL of the other page
+hideLoadingSymbol(); // Hide loading symbol after navigation
+}, 2000); // Simulated delay of 2 seconds
+}
+
+function navigateToAnotherPage1() {
+showLoadingSymbol(); // Show loading symbol before navigating
+
+// Simulate a delay (you can replace this with your actual navigation logic)
+setTimeout(function () {
+window.location.href = 'userslist.html'; // Change this to the URL of the other page
+hideLoadingSymbol(); // Hide loading symbol after navigation
+}, 2000); // Simulated delay of 2 seconds
+}
+// 
+
+function navigateToAnotherPage2() {
+showLoadingSymbol(); // Show loading symbol before navigating
+
+// Simulate a delay (you can replace this with your actual navigation logic)
+setTimeout(function () {
+window.location.href = 'adminslist.html'; // Change this to the URL of the other page
+hideLoadingSymbol(); // Hide loading symbol after navigation
+}, 2000); // Simulated delay of 2 seconds
+}
+function validateNumericInput(input) {
+// Remove non-numeric characters from the input value
+input.value = input.value.replace(/\D/g, '');
+}
+
+function toggleSubMenu(submenuId) {
+    var submenus = document.querySelectorAll(".submenu");
+    submenus.forEach(function (submenu) {
+      if (submenu.id !== submenuId) {
+        submenu.classList.remove("show");
+      }
+    });
+  
+    var submenu = document.getElementById(submenuId);
+    submenu.classList.toggle("show");
+  }
+
+  function openPopup(popupId) {
+    var popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = "block";
+    }
+}
+
+function closePopup() {
+    isEditing = false;
+    var popups = document.querySelectorAll(".popup");
+    popups.forEach(function (popup) {
+      popup.style.display = "none";
+    });
+  }
+
+  function closePopup2() {
+    isEditing = false;
+    var popups = document.querySelectorAll(".popup2");
+    popups.forEach(function (popup2) {
+      popup2.style.display = "none";
+    });
+  }
+
+  function closePopup3() {
+    isEditing = false;
+    var popups = document.querySelectorAll(".popup3");
+    popups.forEach(function (popup3) {
+      popup3.style.display = "none";
+    });
+  }
+
+
+  function validateNumericInput(input) {
+    // Remove non-numeric characters from the input value
+    input.value = input.value.replace(/\D/g, '');
+}
+
+
+</script>
+
+<script th:inline="javascript">
+    function updateStoreName(select) {
+        var selectedOption = select.options[select.selectedIndex];
+        var storeName = selectedOption.getAttribute('data-store-name');
+        document.getElementById('storename').value = storeName;
+    }
+</script>
+
+
+<script th:inline="javascript">
+    const storeNameInput = document.getElementById('storeName');
+    const cityInput = document.getElementById('city');
+    const stateInput = document.getElementById('state');
+    const fullAddressInput = document.getElementById('fullAddress');
+
+    // Event listeners for store name, city, pincode, and state inputs
+    [storeNameInput, cityInput, stateInput].forEach(input => {
+        input.addEventListener('input', updateFullAddress);
+    });
+
+    // Function to update full address based on inputs
+    function updateFullAddress() {
+        const storeName = storeNameInput.value;
+        const city = cityInput.value;
+        const state = stateInput.value;
+
+        // Update the full address field
+        fullAddressInput.value = '' + storeName + ', ' + city + ', ' + state + '';
+    }
+    
+</script>
+
+<script>
+function validateNumericInput(input) {
+    // Remove non-numeric characters from the input value
+    let numericValue = input.value.replace(/\D/g, '');
+
+    // Limit the numeric value to 10 characters
+    numericValue = numericValue.slice(0, 10);
+
+    // Update the input value with the processed numeric value
+    input.value = numericValue;
+}
+
+</script>
+
+    
+
+               
+</body>
+</html>

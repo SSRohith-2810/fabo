@@ -1,0 +1,189 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.main-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2)20%, rgba(0, 0, 0, 0.2)20%), url("/images/Desk-bg.jpg");
+    background-position: center;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.admin-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 90%;
+    width: 60%;
+    background: linear-gradient(-150deg, #3d1b63, #ef4d79);
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 5px 5px 5px black;
+}
+.form-container::-webkit-scrollbar
+{
+    display: none;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+}
+
+.title h2 {
+    margin: 0 5%;
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    color: #fff;
+    margin-top: 20px;
+  
+}
+
+.title h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 30px;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(135deg, #3d1b63, #ef4d79);
+}
+
+.form {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+height: fit-content;
+width: 85%;
+border-radius: 10px;
+color: white;
+background-color: #ddd;
+border: 2px solid #fff;
+overflow-y: auto; /* Added for scrolling */
+white-space: none;
+padding-top: 10px;
+}
+
+/* Add this style for the form container to make it scrollable */
+.form-container {
+    width: 100%;
+max-height: 500px; /* Adjust the height as needed */
+overflow-y: auto; /* Added for scrolling */
+display: flex;
+justify-content: center;
+
+}
+
+.form > .form-dts {
+width: 90%;
+height: 85%;
+display: flex;
+flex-direction: column;
+margin-top: 3%;
+justify-content: center;
+align-items: first baseline;
+color: #3d1b63;
+margin-bottom: 20px; /* Added margin at the bottom */
+}
+
+
+.form li {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+}
+
+.form li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    width: 20%;
+    height: 60%;
+    margin: 0 2%;
+    border-radius: 30px;
+    background: linear-gradient(150deg, #3d1b63, #ef4d79);
+}
+
+.form li a:hover {
+    background: linear-gradient(-150deg, #3d1b63, #ef4d79);
+}
+
+.closex-btn {
+    margin-left: 92%;
+    margin-top: -10px;
+}
+
+.closex-btn li {
+    display: flex;
+}
+
+.closex-btn li a {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    background: linear-gradient(150deg, #3d1b63, #ef4d79);
+}
+
+.closex-btn li a:hover {
+    background: linear-gradient(-150deg, #3d1b63, #ef4d79);
+    scale: 1.05;
+    transition: 0.1s ease-in-out;
+}
+
+/* download preview icons */
+i{
+    position: relative;
+    left:300px;
+    margin: 5px;
+}
+
+/* comments box */
+.comment-container {
+    margin-bottom: 20px;
+    border: 2px solid #3d1b63;
+    padding: 10px;
+    position: relative;
+    font-size: 12px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+    outline: none;
+    resize: none;
+}

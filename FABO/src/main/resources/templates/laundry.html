@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ef4d79, #3d1b63);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card-body {
+            height: 450px;
+        }
+
+        .dropdown {
+            outline: none;
+            width: 85%;
+            background: transparent;
+            border: none;
+            color: #fff;
+        }
+
+        .preview1 {
+            height: 80vh
+        }
+
+        .img-preview {
+            height: 80%;
+        }
+
+        .preview-btn1,
+        .Delete-btn,
+        .close-btn {
+            background: linear-gradient(135deg, #3d1b63, #ef4d79);
+            color: #fff;
+            border: 2px solid #fff;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .preview-btn1:hover,
+        .Delete-btn:hover,
+        .close-btn:hover {
+            background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+            scale: 1.05;
+            transition: 0.1s ease-in-out;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body class="container-fluid">
+
+    <div class="row mt-3 ms-0 d-flex justify-content-between align-items-center w-100">
+        <!-- Left side - Manage Admin -->
+        <div class="col-md-4">
+            <h2 style="color:#fff;">Laundry</h2>
+
+            <!-- Your content for managing admin goes here -->
+        </div>
+
+
+
+        <!-- Right side - Close and Submit buttons -->
+        <div class="col-md-1">
+            <button type="button" class="btn close-btn ms-4 position-relative w-50" style="height:40px;"><a
+                    style="width:30px;margin-left: -4px;height:30px;margin-top:-4px;text-decoration: none; color:#ffff;"
+                    class="d-flex justify-content-center align-items-center" href=view>X</a></button>
+        </div>
+    </div>
+    <!-- Second division with multiple rows of four elements each -->
+    <div class="row mt-5 ms-2 me-2 w-100">
+        <!-- First row of four elements -->
+    <!-- Iterate over each base64 image and render thumbnails -->
+    
+
+<div class="col-md-3 mb-5" th:each="creativeWithImage : ${creativeWithImages}">
+    <div class="card">
+        <div class="card-body">
+            <img th:id="'originalImage-' + ${creativeWithImage.id}" th:src="'data:image/png;base64,' + ${creativeWithImage.base64Image}" alt="Canvas Image" class="w-100" style="height:370px;">
+            <div class="w-100 d-flex justify-content-center mt-2">
+                <!-- Add the class "preview-btn" and data attributes for image source -->
+                <button type="button" class="preview-btn me-2 mt-2 border rounded p-2 preview-btn1" th:id="'preview-button-' + ${creativeWithImage.id}"   data-bs-toggle="modal" data-bs-target="#preview-modal"  onclick="setPreviewImage(this);">Preview</button>
+                <button class="ms-2 border rounded mt-2 p-2 Delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade w-100" id="preview-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content preview1 w-100">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="" class="w-100 img-preview">
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+    </div>
+    
+    <!--script>
+    function previewImage1(event) {
+        // Prevent default button behavior
+        event.preventDefault();
+
+        // Get the button element
+        var previewImage = document.getElementById('originalImage');
+        console.log(previewImage);
+        
+        // Get the data-imageSrc attribute value
+         var src = previewImage.getAttribute('src');
+         console.log(src);
+            var modalImage = document.getElementById('modal-image');
+            var src1 = modalImage.getAttribute('src');
+            console.log(src1);
+            console.log(modalImage);
+    modalImage.setAttribute('src', src);
+   // Set the src attribute value for the ne
+    }
+</script-->
+
+
+<!--script>
+    function previewImage(creativeId) {
+        var imageId = 'originalImage-' + creativeId;
+         console.log("Image ID:", creativeId);
+        var previewImage = document.getElementById(imageId);
+        var src = previewImage.getAttribute('src');
+
+        // Set the modal image source
+        var modalImage = document.getElementById('modal-image');
+        modalImage.setAttribute('src', src);
+    }
+</script-->
+
+
+<script>
+function findImagesInCardBodies(imageSrc) {
+    // Get all elements with the class "card-body"
+    console.log(imageSrc);
+const modalImage = document.getElementById('modal-image');
+    modalImage.src = imageSrc;
+}
+</script>
+<script>
+function setPreviewImage(button) {
+    // Get the id attribute of the button
+    const buttonId = button.getAttribute('id');
+	console.log(buttonId);
+    // Extract the image ID from the buttonId
+    const imageId = buttonId.split('-')[2];
+    console.log(imageId);
+
+    // Construct the ID of the original image based on the retrieved image ID
+    const originalImageId = 'originalImage-' + imageId;
+
+    // Get the source of the original image
+    const originalImageSrc = document.getElementById(originalImageId).getAttribute('src');
+
+    // Set the source of the modal image
+    const modalImage = document.getElementById('modal-image');
+    modalImage.src = originalImageSrc;
+}
+</script>
+
+
+<script>
+    function showPreview(imageId) {
+        console.log("Image ID:", imageId);
+        
+        var originalImageId = 'originalImage-' + imageId;
+        console.log("Original Image ID:", originalImageId);
+        
+        var originalImage = document.getElementById(originalImageId);
+        console.log("Original Image Element:", originalImage);
+        
+        if (originalImage) {
+            var base64Image = originalImage.getAttribute('src');
+            console.log("Base64 Image Source:", base64Image);
+            
+            var modalImage = document.getElementById('modal-image');
+            modalImage.setAttribute('src', base64Image);
+        } else {
+            console.log("Original image element not found.");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+</html>

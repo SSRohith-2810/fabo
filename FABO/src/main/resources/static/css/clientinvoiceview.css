@@ -1,0 +1,110 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.main-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    background:linear-gradient(to top, rgba(0,0,0,0.2)20%,rgba(0,0,0,0.2)20%), url(Desk-bg.jpg);
+    background-position: center;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+
+
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+
+    
+}
+
+.invoice-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+    width: 60%;
+    background:  linear-gradient(-150deg, #3d1b63, #ef4d79);
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 5px 5px 5px black;
+}
+
+#invoice {
+    width: 700px;
+    height: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #ddd;
+}
+
+h2{
+    color: #3d1b63;
+}
+
+strong{
+    color: #3d1b63;
+}
+
+p{
+    color: #ef4d79;
+}
+
+#logo {
+    float: left;
+    
+}
+
+
+
+#downloadButton {
+  padding: 1% 5%;
+  margin-top: 5%;
+  float: right;
+  background: linear-gradient(-150deg, #3d1b63, #ef4d79);
+  color: white;
+  font-size: large;
+  border: 2px solid #fff;
+  border-radius: 10px;
+}
+
+#downloadButton:hover{
+    background: linear-gradient(150deg, #3d1b63, #ef4d79);
+    scale: 1.05;
+    transition: 0.1s ease-in-out;
+
+}
+
+#closeButton a{
+   float: right;
+   color: #ef4d79;
+   cursor: pointer;
+   padding: 5px 10px;
+   border-radius: 5px;
+
+}
+#closeButton a:hover{
+    background: linear-gradient(150deg, #3d1b63, #ef4d79);
+    color: white;
+    scale: 1.05;
+    transition: 0.1s ease-in-out;
+    border: 2px solid white;
+}
+
+a{
+    text-decoration: none;
+    color: #ef4d79;
+}

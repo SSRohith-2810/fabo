@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            width: 100vw;
+            /* height:50vh; */
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2)20%, rgba(0, 0, 0, 0.2)20%), url("/images/For.jpg");
+            background-size: 100% 100%;
+            background-position: center;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dashboard-logo img {
+            width: 12vw;
+            
+            margin-left: 2vw;
+        }
+
+        .nav-bar {
+            width: 100%;
+            height: 18vh;
+            /* background-color: red; */
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            /* border-bottom: 2px solid white; */
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .dashboard-button {
+            width: 12vw;
+            height: 10vh;
+            /* background-color: blue; */
+            border-radius: 40px;
+            margin-top: 2vh;
+            margin-left: -10vw;
+        }
+
+        .dashboard-button button {
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #ef4d79, #3d1b63);
+            font-size: medium;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid #fff;
+            margin-left: -3vw;
+        }
+
+        .dashboard-button button:hover {
+            background: linear-gradient(135deg, #ef4d79, #3d1b63);
+            transform: scale(1.09);
+        }
+
+        .dashboard-left {
+            display: flex;
+            justify-content: space-evenly;
+            width: 30Vw;
+            margin-top: 2vh;
+        }
+
+        .dashboard-account {
+            width: 8vw;
+            margin-top: 3vh;
+            color: white;
+            /* background-color: red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .dashboard-account i {
+            font-size: 2vw;
+        }
+
+        .dashboard-account i:hover {
+            transform: scale(1.23);
+        }
+
+        .dashboard-account p {
+            margin-top: 1.8vh;
+            text-align: center;
+            /* margin-left:-1.2vw; */
+        }
+
+        .dashboard-account p span {
+            text-align: center;
+            margin-left: 1.4vh;
+        }
+
+        .dashboard-logout {
+            margin-top: 5vh;
+            color: white;
+        }
+
+        .dashboard-logout i {
+            font-size: 2vw;
+        }
+
+        .dashboard-logout i:hover {
+            transform: scale(1.23);
+        }
+
+        .dashboard-logout {
+            width: 8vw;
+            margin-top: 3vh;
+            color: white;
+            /* background-color: red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            width: 100%;
+            margin: 2vh auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .search-input {
+            width: 60%;
+            padding: 15px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            /* box-shadow: 2px 2px 2px #ef4d79, -2px 2px 2px #3d1b63, 2px -2px 2px #ef4d79, -2px -2px 2px #3d1b63; */
+            font-size: medium;
+            border: 2px solid red;
+            margin-left: 5%;
+        }
+
+
+    
+
+        .search-bar i {
+            margin-left: -3%;
+            font-size: 1.5vw;
+        }
+
+        .filter-button {
+            width: 20%;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ef4d79, #3d1b63);
+            border-radius: 30px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 1%;
+            border: 2px solid #fff;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .filter-button:hover {
+            background: linear-gradient(135deg, #ef4d79, #3d1b63);
+            transform: scale(1.09);
+        }
+
+        .section-1 {
+            /* width:90%;
+        height:10vh; */
+            /* background-color: #ef4d79; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10%;
+            margin-left: 10%;
+            flex-direction: row;
+        }
+
+        .account-transaction {
+            width: 100%;
+            height: 50vh;
+            margin-bottom: 16vh;
+            /* background-color: #78678b; */
+        }
+
+        .account-transaction {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            color: #fff;
+            font-weight: bold;
+            flex-direction: column;
+        }
+
+        .account-transaction h2 {
+            font-size: 6.5vh;
+            margin-left: 40%;
+            text-decoration: underline;
+        }
+
+        .account-transaction p span {
+            font-size: 10vh;
+            margin-left: 50%;
+        }
+
+        .total-acount {
+            width: 70%;
+            height: 30vh;
+            /* background-color: #78678b; */
+            margin-left: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+
+        }
+
+        
+        .button-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            /* background-color: aqua; */
+        }
+
+        .button {
+            border: 2px solid #fff;
+            padding: 20px 50px;
+            text-align: center;
+            width: 100%;
+            background: linear-gradient(135deg, #ef4d79, #3d1b63);
+            color: white;
+            border-radius: 30px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .btn{
+            width: 20%;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 23px;
+        }
+
+        .button-container .btn button {
+            cursor: pointer;
+        }
+
+        .button-container .btn button:hover {
+            transform: scale(1.09);
+        }
+
+
+        /* .main{
+        width:100%;
+        /* background-color: #ef4d79;
+        position: fixed;
+        top:0%;
+    } */
+
+        .footer {
+            position: relative;
+            left: -1%;
+            width: 101vw;
+            height: 70vh;
+            background-color: #4C356C;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .footer .subfooter {
+            width: 20vw;
+            height: 50vh;
+            /* background-color:#ef4d79; */
+            /* display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; */
+            color: #fff;
+            font-weight: bolder;
+
+        }
+
+        .footer .subfooter h2 {
+            text-align: center;
+        }
+
+        .footer .subfooter ul li {
+            padding: 2%;
+            list-style-type: none;
+        }
+
+        .footer .subfooter .footer-li .footer-logo a {
+            color: #fff;
+        }
+
+        .footer-li .footer-logo {
+            width: 100%;
+            margin-top: 10px;
+            margin-left: -40px;
+            padding: 20px;
+            /* background-color: #3d1b63; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4%;
+
+        }
+
+        .footer-li .footer-logo .f {
+            width: 4vw;
+            height: 8vh;
+            /* background-color:red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .footer-li .footer-logo .f:hover {
+            transform: scale(1.09);
+        }
+
+        .footer-li .footer-logo .f i {
+            font-size: 25px;
+        }
+
+        .footer-li .footer-logo .f1 {
+            background-color: #69727d;
+        }
+
+        .footer-li .footer-logo .f2 {
+            background-color: #262626;
+        }
+
+        .footer-li .footer-logo .f3 {
+            background-color: #1da1f2;
+        }
+
+        .footer-li .footer-logo .f4 {
+            background-color: #cd201f;
+        }
+
+        .subfooter ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .subfooter ul li a:hover {
+            color: #ef4d79;
+        }
+
+        .subfooter ul li a img:hover {
+            transform: scale(1.09);
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            margin-left: 48%;
+        }
+        #searchForm{
+			width:100%;
+		}
+    </style>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="dashboard-logo">
+            <img th:src="@{/images/fabo.logo.png}"  alt="">
+        </div>
+        <div class="dashboard-button">
+            <a href=adminshome><button>Home</button></a>
+        </div>
+        <div class="dashboard-left">
+            <div class="dashboard-account">
+                <i class="fa-solid fa-circle-user" ></i>
+                <p>Support<br>Admin</span></p>
+            </div>
+            <div class="dashboard-logout" onclick="redirectToLogout()">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <p>Log Out</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="section-1">
+			<form action="/accountadmindashboard" method="get" id="searchForm">
+            <div class="search-bar">
+                <input type="text" class="search-input"  name="storeinfo" placeholder="Search by any Store Name or Store Code" list="storeDropdown">
+                <i class="fas fa-search search-icon"></i>
+                 <datalist id="storeDropdown">
+				    <option th:each="client : ${clients}" 
+				            th:text="${client.storeCode + ' - ' + client.storeName}" 
+				            th:attr="data-store-name=${client.storeName}, data-store-contact=${client.storeContact}" 
+				            th:if="${client.activeStatus}">
+				    </option>
+				</datalist>
+                <button class="filter-button" onclick="toggleFilter()">Filter</button>
+            </div>
+            </form>
+            
+        </div>
+
+        <div class="account-transaction">
+            <div class="account-trans">
+                <h2>Account Transactions</h2>
+                <img th:src="@{/images/Untitled design (1).png}" alt="">
+               
+            </div>
+
+            <div class="total-Support Requests">
+                <div class="button-container">
+                    <div class="btn">
+                        <h1>Total <br> Amount</h1>
+                        <button class="button" th:text="${totalAmount}"></button>
+                    </div>
+                    <div class="btn">
+                        <h1>Total Received <br>Amount</h1>
+                        <button class="button" th:text="${totalPaidAmount}"></button>
+                    </div>
+                    <div class="btn">
+                        <h1>Total Pending <br>Amount</h1>
+                        <button class="button" th:text="${totalPendingAmount}"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="subfooter">
+            <h2>Contact Us</h2>
+            <ul>
+                <li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;+91 8977005506</li>
+                <li><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;care@fabonow.com</li>
+                <li class="footer-li">
+                    <div class="footer-logo">
+                        <div class="f1 f"><a href="https://www.facebook.com/fabonow/"> <i
+                                    class="fa-brands fa-facebook"></i></a></div>
+                        <div class="f2 f"><a href="https://www.instagram.com/fabonow/"> <i
+                                    class="fa-brands fa-instagram"></i></a></div>
+                        <div class="f3 f"><a href="https://www.facebook.com/fabonow/"> <i
+                                    class="fa-brands fa-twitter"></i></a></div>
+                        <div class="f4 f"><a href="https://www.youtube.com/@fabonow7595/featured"> <i
+                                    class="fa-brands fa-youtube"></i></a></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="subfooter">
+            <h2>Quick links</h2>
+            <ul>
+                <li><a href="https://www.fabonow.com/">Home</a></li>
+                <li><a href="https://www.fabonow.com/franchise/">Franchise</a></li>
+                <li><a href="https://www.fabonow.com/blogs/">Blogs</a></li>
+                <li><a href="https://www.fabonow.com/contact-us/">Contact Us</a></li>
+                <li><a href="https://www.fabonow.com/pricing-2/">Pricing</a></li>
+                <li><a href="https://www.fabonow.com/terms-and-conditions/">Tearms & Conditions</a></li>
+                <li><a href="https://www.fabonow.com/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="https://www.fabonow.com/refund-policy/">Refund Policy</a></li>
+            </ul>
+        </div>
+        <div class="subfooter">
+            <h2>Services</h2>
+            <ul>
+                <li><a href="https://www.fabonow.com/">Laundry</a></li>
+                <li><a href="https://www.fabonow.com/">Dry Cleaning</a></li>
+                <li><a href="https://www.fabonow.com/">Home Furnishing</a></li>
+                <li><a href="https://www.fabonow.com/">Leather Cleaning</a></li>
+            </ul>
+        </div>
+        <div class="subfooter">
+            <h2>Download the FABO App</h2>
+            <ul>
+                <li>From</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.quickdrycleaning.fabo&pli=1"><img
+                            src="https://i0.wp.com/www.fabonow.com/wp-content/uploads/2023/07/playstore.png?fit=168%2C55&ssl=1"
+                            alt=""></a></li>
+                <li><a href="https://apps.apple.com/in/app/fabo-laundry-and-drycleaning/id1612516228"><img
+                            src="https://i0.wp.com/www.fabonow.com/wp-content/uploads/2023/07/appstore.png?fit=168%2C55&ssl=1"
+                            alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+         <script>
+		function searchSupportAdmin() {
+			    document.getElementById("searchForm").submit(); // Submit the form when input changes
+			}
+	</script>
+	
+	<script>
+function redirectToLogout() {
+    // Perform redirection to the logout page
+    window.location.href = "/logout"; // Replace "/logout" with the actual logout page URL
+}
+</script>
+</body>
+
+</html>

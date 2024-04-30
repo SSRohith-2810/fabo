@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  th:href="@{/css/addinvoice.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <title>FABO</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+<form id="invoiceForm" th:action="@{/createInvoice}" th:object="${invoice}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+    <h1>Add Invoice</h1>
+
+    <div class="input-box">
+            <label for="storeDropdown">Select Store Code</label>
+            <input type="text" placeholder="Select Store" name="storeCode" id="selectedStoreCode" list="storeDropdown">
+            <datalist id="storeDropdown">
+             <option th:each="client : ${clients}" 
+        th:value="${client.storeCode}" 
+        th:text="${client.storeCode}" 
+        th:attr="data-store-name=${client.storeName}, data-store-contact=${client.storeContact}" 
+        th:if="${client.activeStatus}">
+</option>
+            </datalist>
+            <p id="storeCodeError" style="color: red; font-size: small; display: none;">Please select a valid store code.</p>
+        </div>
+        <div class="input-box">
+            <label for="storeDropdown">Store Name</label>
+            <input type="text" id="storeName" name="storeName" placeholder="Store Name" readonly>
+        </div>
+    
+    <label for="invoice-type">Select Invoice Type *</label>
+    <input type="text" name="invoiceType" id="invoiceType" list="invoicedropdown" required>
+    <datalist id="invoicedropdown">
+        <!-- Options for invoice types here -->
+        <option value="Royalty">Royalty</option>
+        <option value="Chemicals">Chemicals</option>
+        <option value="General">General</option>
+        <!-- Add more options as needed -->
+    </datalist>
+   
+	 <label for="date">Invoice Date *</label>
+    <!-- Prepopulating current date -->
+    <input type="date" id="invoiceDate"  name="invoiceDate" placeholder="Enter Invoice Date" required oninput="validateDate()" readonly th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}">
+    
+    
+   <label for="invoice-amount">Invoice Amount *</label>
+<input type="text" th:field="*{invoiceAmount}" id="invoiceAmount" name="invoiceAmount" oninput="formatAmount(this)" required>
+
+    <label for="comments">Comments *</label>
+    <textarea id="comments" th:field="*{invoiceComments}" name="comments" rows="4" placeholder="Enter Comments" required></textarea>
+    
+    <label class="upload-link" for="file-upload">Upload Images(+) *</label>
+    <div class="file-upload">
+        <input type="file" id="file-upload" name="files" accept="image/,video/" multiple required>
+    </div>
+    <div class="file-list"></div>
+    <div class="button-container">
+        <button type="submit">Submit</button>
+       <button onclick="window.location.href='/adminshome'" type="button">Close</button>
+    </div>
+</form>
+
+<script>
+function formatAmount(input) {
+    // Remove non-numeric characters from the input value
+    var sanitizedValue = input.value.replace(/[^0-9]/g, '');
+    
+    // Format the value with commas
+    var formattedValue = sanitizedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    
+    // Set the formatted value back to the input
+    input.value = formattedValue;
+}
+
+        // Function to validate the form before submission
+        function validateForm() {
+            const form = document.getElementById("invoiceForm");
+
+            // Check if the form is valid
+            if (form.checkValidity()) {
+                // If valid, you can submit the form or perform other actions
+                alert("Form submitted!");
+                return true;
+            } else {
+                // If not valid, the browser will display the validation messages
+                alert("Please fill in all required fields.");
+                return false;
+            }
+        }
+
+        // Function to validate the date input
+        function validateDate() {
+            const inputDate = document.getElementById("invoiceDate").value;
+            const today = new Date().toISOString().split('T')[0];
+
+            if (inputDate > today) {
+                alert("Future dates are not allowed");
+                document.getElementById("invoiceDate").value = today;
+            }
+        }
+
+        // Function to validate the amount input
+        function validateAmount(input) {
+            input.value = input.value.replace(/[^0-9]/g, '');
+        }
+
+        $(document).ready(function() {
+            $("#selectedStoreCode").on("input", function() {
+                const selectedCode = $(this).val();
+                const selectedStoreName = $("#storeDropdown option[value='" + selectedCode + "']").attr("data-store-name");
+                $("#storeName").val(selectedStoreName);
+            });
+        });
+</script>
+
+<!--script>
+    function validateForm() {
+        // Get the selected store code
+        const selectedStoreCode = document.getElementById('selectedStoreCode').value;
+        
+        // Get all available store codes in the dropdown
+        const storeCodes = Array.from(document.querySelectorAll('#storeDropdown option')).map(option => option.value);
+        
+        // Check if the selected store code is in the dropdown
+        if (!storeCodes.includes(selectedStoreCode)) {
+            // If the selected store code is not in the dropdown, display an error message
+            document.getElementById('storeCodeError').style.display = 'block';
+            return false; // Prevent form submission
+        } else {
+            // If the selected store code is in the dropdown, hide the error message (if shown)
+            document.getElementById('storeCodeError').style.display = 'none';
+            return true; // Allow form submission
+        }
+    }
+</script-->
+
+<script>
+    function validateForm() {
+        // Get the selected store code
+        const selectedStoreCode = document.getElementById('selectedStoreCode').value;
+        
+        // Get all available store codes in the dropdown
+        const storeCodes = Array.from(document.querySelectorAll('#storeDropdown option')).map(option => option.value);
+        
+        // Check if the selected store code is in the dropdown
+        if (!storeCodes.includes(selectedStoreCode)) {
+            // If the selected store code is not in the dropdown, display an error message
+            document.getElementById('storeCodeError').style.display = 'block';
+            return false; // Prevent form submission
+        } else {
+            // If the selected store code is in the dropdown, hide the error message (if shown)
+            document.getElementById('storeCodeError').style.display = 'none';
+        }
+
+        // Validate invoice type selection
+        const invoiceTypeInput = document.getElementById("invoiceType");
+        const invoiceTypeDatalist = document.getElementById("invoicedropdown");
+        const invoiceTypes = Array.from(invoiceTypeDatalist.options).map(option => option.value);
+        if (!invoiceTypes.includes(invoiceTypeInput.value)) {
+            // If the selected invoice type is not in the dropdown, display an error message
+            alert("Please select a valid invoice type.");
+            return false; // Prevent form submission
+        }
+        
+        return true; // Allow form submission
+    }
+</script>
+
+	
+	<script>
+	 document.getElementById('file-upload').addEventListener('change', function(event) {
+		    const fileList = event.target.files;
+		    const fileDisplay = document.querySelector('.file-list');
+
+		    Array.from(fileList).forEach((file, index) => {
+		        const fileId = `file-${index}`;
+		        const buttonId = `button-${index}`;
+
+		        const item = document.createElement('div');
+		        item.classList.add('file-item');
+		        item.innerHTML = `<span id="${fileId}">${file.name}</span> <button id="${buttonId}" onclick="removeFile('${fileId}', '${buttonId}', event)">X</button>`;
+		        fileDisplay.appendChild(item);
+		    });
+		});
+
+		function removeFile(fileId, buttonId, event) {
+		    event.preventDefault(); // Prevent default action for the remove button
+
+		    // Extract the file name from the fileId
+		    const fileName = document.getElementById(fileId).innerText; // Assuming the fileId corresponds to the <span> element containing the file name
+
+		    console.log("File Name:", fileName);
+
+		    // Remove the file item from the display
+		    const fileItem = document.getElementById(fileId);
+		    fileItem.parentElement.removeChild(fileItem);
+		    console.log("Removed File Item:", fileItem);
+
+		    // Remove the corresponding button
+		    const button = document.getElementById(buttonId);
+		    button.parentElement.removeChild(button);
+		    console.log("Removed Button:", button);
+
+		    // Remove the file from the input
+		    const input = document.getElementById('file-upload');
+		    const fileList = input.files;
+		    const newFileList = Array.from(fileList).filter(file => {
+		        console.log("File Name in Filter:", file.name);
+		        console.log("File Name to Remove:", fileName);
+		        return file.name !== fileName;
+		    });
+		    console.log("New File List after Filtering:", newFileList);
+
+		    // Create a new FileList object
+		    const dataTransfer = new DataTransfer();
+		    newFileList.forEach(newFile => dataTransfer.items.add(newFile));
+		    console.log("New File List after Adding to DataTransfer:", dataTransfer.files);
+
+		    input.files = dataTransfer.files;
+		}
+
+
+	</script>
+	
+<script>
+    $(document).ready(function() {
+        // Event listener for the input change
+        $("#selectedStoreCode").on("input", function() {
+            // Get the selected store code
+            var selectedCode = $(this).val();
+
+            // Find the corresponding store name and store contact using data-store-name and data-store-contact attributes
+            var selectedStore = $("#storeDropdown option[value='" + selectedCode + "']");
+            var selectedStoreName = selectedStore.attr("data-store-name");
+            var selectedStoreContact = selectedStore.attr("data-store-contact");
+
+            // Update the store name field and store contact field
+            $("#storeName").val(selectedStoreName);
+            $("#phoneNumber").val(selectedStoreContact);
+
+            // Check if the entered store code exists in the dropdown
+            var storeCodes = $("#storeDropdown option").map(function() {
+                return $(this).val();
+            }).get();
+            
+            if (!storeCodes.includes(selectedCode)) {
+                // If the entered store code is not in the dropdown, display an error message
+                $("#storeCodeError").show();
+            } else {
+                // If the entered store code is in the dropdown, hide the error message
+                $("#storeCodeError").hide();
+            }
+        });
+
+        // Event listener for the phone number input
+        $("#phoneNumber").on("input", function() {
+            // Remove any non-numeric characters
+            var phoneNumber = $(this).val().replace(/\D/g, '');
+            
+            // Limit the phone number to 10 digits
+            phoneNumber = phoneNumber.slice(0, 10);
+            
+            // Update the value of the phone number input
+            $(this).val(phoneNumber);
+        });
+    });
+</script>
+
+</body>
+</html>

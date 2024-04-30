@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{css/clientshome.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-##########" crossorigin="anonymous" />
+
+</head>
+<body>
+    <div class="main-page">
+        <!-- Side bar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <img th:src="@{/images/fabo.logo.png}" alt="Your Logo">
+            </div>
+         
+          <div class="sbbuttons">
+                <button sec:authorize="hasRole('CLIENT_ACCOUNTS')" id="button8" onclick="toggleSubMenu('submenu8')">Accounts</button>
+                <ul class="submenu" id="submenu8">
+                    <li><a href=viewinvoices>View Invoices</a></li>
+                    
+                </ul> 
+             
+                <button sec:authorize="hasRole('CLIENT_SUPPORT')" id="button9" onclick="toggleSubMenu('submenu9')">Support Requests</button>
+                <ul class="submenu" id="submenu9">
+                    <li><a href=clientsupport>Add Support Request</a></li>
+                     <li><a href=viewclientsupport>Manage Support Requests</a></li>
+                    
+                </ul> 
+             
+                <button sec:authorize="hasRole('CLIENT_PURCHASES')" id="button10" onclick="toggleSubMenu('submenu10')">Purchase Requests</button>
+                <ul class="submenu" id="submenu10">
+                    <li><a href=clientaddproduct>Add Purchase Request</a></li>
+                     <li><a href=clientproductview>Manage Purchase Requests</a></li>
+                    
+                </ul> 
+                
+                <button sec:authorize="hasRole('CLIENT_CREATIVES')" id="button11" onclick="toggleSubMenu('submenu11')">Creatives</button>
+                <ul class="submenu" id="submenu11">
+                     <li><a href=viewClient>Manage Creatives</a></li>
+                    
+                </ul> 
+                
+                </div>
+                
+         
+        </div>
+
+        <div class="section">
+            <div class="dash-btns">
+                     <li><a sec:authorize="hasRole('CLIENT_SUPPORT')" href=clientsupportadmindash>Client Support Dashboard</a></li>
+                    <li><a sec:authorize="hasRole('CLIENT_ACCOUNTS')" href=clientaccountadmindash>Client Account Dashboard</a></li>
+                    <li><a sec:authorize="hasRole('CLIENT_PRODUCTS')" href=clientproductadmindash>Client Product Dashboard</a></li>
+                     <!--li class="dropdown">
+				        <a href="#" id="notificationsDropdownToggle" class="dropdown-toggle">
+				            <i class="fas fa-bell"></i> Notifications
+				            <span class="badge badge-pill badge-danger" id="notificationCount">0</span>
+				        </a>
+				        <div class="dropdown-menu" id="notificationsDropdown">
+				            <!-- Notifications will be dynamically inserted here -->
+				        <!--/div>
+				    </li-->
+                    <li><a href=password >Reset Password</a></li>
+                   <li><a href=logout>LogOut</a></li>
+                
+            </div>
+            <div class="greeting">
+                <div class="faboimg">
+                    <img  th:src="@{/images/Untitled_design__5_-removebg-preview.png}" alt="">
+                </div>
+                <div class="text">
+                    <h3>For Fabulous Homes & Fabrics </h3>
+                </div>              
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleSubMenu(submenuId) {
+    var submenus = document.querySelectorAll(".submenu");
+    submenus.forEach(function (submenu) {
+      if (submenu.id !== submenuId) {
+        submenu.classList.remove("show");
+      }
+    });
+  
+    var submenu = document.getElementById(submenuId);
+    submenu.classList.toggle("show");
+  }
+
+  function openPopup(popupId) {
+    var popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = "block";
+    }
+}
+
+function closePopup() {
+    isEditing = false;
+    var popups = document.querySelectorAll(".popup");
+    popups.forEach(function (popup) {
+      popup.style.display = "none";
+    });
+  }
+
+
+  function validateNumericInput(input) {
+    // Remove non-numeric characters from the input value
+    input.value = input.value.replace(/\D/g, '');
+}
+
+    </script>
+    
+    <script>
+	
+	document.addEventListener("DOMContentLoaded", function() {
+    const notificationsDropdownToggle = document.getElementById("notificationsDropdownToggle");
+    const notificationsDropdown = document.getElementById("notificationsDropdown");
+
+    notificationsDropdownToggle.addEventListener("click", function() {
+        if (notificationsDropdown.style.display === "block") {
+            notificationsDropdown.style.display = "none";
+        } else {
+            fetchNotifications();
+        }
+    });
+
+    // Function to fetch and display notifications
+    function fetchNotifications() {
+        fetch("/api/notifications")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch notifications");
+                }
+                return response.json();
+            })
+            .then(notifications => {
+                const notificationsContainer = document.getElementById("notificationsDropdown");
+                notificationsContainer.innerHTML = ""; // Clear existing notifications
+
+                notifications.forEach((notification, index) => {
+                    const notificationItem = document.createElement("a");
+                    notificationItem.classList.add("dropdown-item");
+                    notificationItem.textContent = `${index + 1}. ${notification}`; // Append index and notification text
+                    notificationsContainer.appendChild(notificationItem);
+                });
+
+                document.getElementById("notificationCount").textContent = notifications.length; // Update notification count
+                notificationsDropdown.style.display = "block"; // Show dropdown after fetching notifications
+            })
+            .catch(error => {
+                console.error("Error fetching notifications:", error);
+                // Handle error: Display a message or retry fetching notifications
+            });
+    }
+});
+
+
+	</script>
+	
+
+
+    
+</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+    <title>FABO</title>
+    <style>
+    	body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.main-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    background:linear-gradient(to top, rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url);
+    background-position: center;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 20%;
+    height: auto;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+
+.logo-section {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: top;
+    margin-bottom: 10%;
+    /* background-color: #ddd; */
+
+}
+
+.logo-section img {
+    width: 60%;
+    height: 80%;
+}
+
+.sbbuttons {
+    width: 100%;
+    height: 80%;
+    /* background: linear-gradient(180deg ,#ef4d7800 0%,#3d1b63 70%,#3d1b63 100%); */
+    margin-top: 20%;
+}
+.sbbuttons > button li{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+}
+
+ .sbbuttons > button {
+    width: 90%;
+    padding: 10px;
+    margin: 5% 0;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+ }
+
+.sbbuttons>button li{
+    display: flex;
+}
+
+button li a{
+    color: white;
+    text-decoration: none;
+}
+
+.sbbuttons>button:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+}
+
+
+.submenu {
+    list-style-type: none;
+    padding: 0;
+    display: none;
+    margin: 0;
+}
+
+.submenu li {
+    padding: 8px;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 60%;
+    margin-left: 12%;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.submenu li:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+}
+
+.submenu.show {
+    display: block;
+}
+
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100vh;
+ 
+}
+
+.tableform {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    /* height: 80%; Remove fixed height */
+    background: linear-gradient(-105deg, #3d1b63, #ef4d79);
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.table-container {
+    max-height: 60vh; /* Set the max height for the scrollable area */
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+   
+}
+
+.title h2{
+    margin: 0 2% ;
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    color: #fff;
+}
+
+.title h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 30px;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(150deg, #3d1b63, #ef4d79);
+}
+
+.bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    margin: 10px;
+
+}
+
+.filters{
+    flex-direction: row;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 98%;
+    height: 100%;
+    
+}
+
+
+
+.close-button{
+    display: flex;
+    justify-content: right;
+    margin: 0 1%;
+    padding: 5px;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+}
+
+.close-button li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 10%;
+    padding: 5px 10px;
+}
+
+.close-button li a{
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+}
+.close-button li:hover{
+    background-color: red;
+    border-radius: 5px;
+    border: 2px solid white;
+    background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+    transition: 0s ease-in-out;
+}
+
+.fil-2 label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 16px;
+    color: #fff;
+}
+
+.fil-2 select {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.fil-1 label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.fil-1 select {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.fil-3 label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.fil-3 select {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid #ef4d79;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #ef4d79;
+    margin:0 10px;
+
+}
+
+select option {
+    padding: 8px;
+    outline: none;
+
+}
+
+
+
+
+select::-ms-expand {
+    display: none;
+}
+
+
+.search-container {
+    position: relative;
+    width: 200px;
+    margin:0 10px;
+    margin-top: 8px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 9px;
+    border-radius: 5px;
+    padding-left: 40px; /* space for the search icon */
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid #ef4d79;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ef4d79;
+}
+
+
+
+thead {
+    background-color: #3d1b63;
+    color: #fff;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+
+tbody tr {
+    border-bottom: 1px solid #fff;
+    background-color: #ccc;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    border-right: 1px solid #fff;
+}
+
+tbody td:last-child {
+    border-right: none;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+    transition: 0.1s ease-in-out;
+    
+}
+
+.action-icon {
+    font-size: 15px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+td li {
+    display: inline;
+}
+
+.table-container li a{
+    text-decoration: none;
+}
+
+#deleteConfirmationPopup {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 45%;
+    left: 85%;
+
+}
+
+#deleteConfirmationPopup .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    
+   
+}
+
+#deleteConfirmationPopup .card .wrapper {
+    border:2px solid #3d1b63;
+    background-color: #ddd;
+    width: 50%;
+    padding: 25px;
+}
+
+#deleteConfirmationPopup p {
+    
+    font-size: larger;
+    color: #ef4d79;
+    text-align: center;
+}
+
+#deleteConfirmationPopup .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+}
+
+#deleteConfirmationPopup .button-container button {
+    
+   
+    text-align: center;
+    color: white;
+    border:2px solid white;
+    background:linear-gradient(-135deg, #3d1b63, #ef4d79);
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+
+#deleteConfirmationPopup .button-container button:hover{
+ background:linear-gradient( 135deg, #3d1b63, #ef4d79);
+
+}
+
+#deleteConfirmationPopup .title {
+    text-decoration: none;
+
+}
+
+.table-container {
+    max-height: 400px; /* Set the max height for the scrollable area */
+    overflow-y: auto;
+}
+
+
+thead {
+    background-color: #3d1b63;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+/* Additional styles for better appearance */
+.table-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #3d1b63;
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background-color: #ccc;
+}
+tbody a{
+	text-decoration: none;
+	
+}
+
+    </style>
+</head>
+<body>
+    <div class="main-page">
+        <!-- Side bar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <img th:src="@{/images/fabo.logo.png}" alt="Your Logo">
+            </div>
+            <div class="sbbuttons">
+                <button><li><a href=addinvoice>Add Invoice</a></li></button>
+                <button><li><a href=viewinvoice>View Invoices</a></li></button>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="tableform">
+                <div class="title">
+                    <h2>Invoices List</h2>
+                    <div class="close-button">
+                        <li><a href=home>X</a></li>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="filters">
+                        <div class="fil-1">
+                            <label for="cityDropdown">Select State:</label>
+                            <select id="stateDropdown">
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="fil-2">
+                            <label for="cityDropdown">Select a City:</label>
+                            <select id="cityDropdown">
+                                <option value="Hyderabad"></option>
+                                <!-- Cities will be dynamically populated here -->
+                            </select>
+                        </div>
+
+                       <div class="fil-3">
+ 						   <label for="invoicedropdown">Select Invoice Type:</label>
+							    <select id="invoicedropdown" onchange="filterByInvoiceType()" required>
+							    	<option value="All">All</option>
+							        <option value="Royalty">Royalty</option>
+							        <option value="Chemicals">Chemicals</option>
+							        <option value="General">General</option>
+							    </select>
+					</div>
+
+			<div class="search-container">
+					<form th:action="@{viewinvoice}" method="get" class="search-form">
+  				  		 <input type="text" class="search-bar" placeholder="Search" name="search" >
+        				 <button type="submit" class="search-icon">
+           				     <i class="fas fa-search"></i>
+       					 </button>
+   				 </div>
+			</form>
+                       
+                    </div>
+                </div>
+                <div class="table-container">
+                   <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Store Code</th>  
+                                <th>Store Name</th>
+                                <th>Invoice Type</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody id="clientsTableBody">
+                          
+                            <tr th:each= "invoice : ${invoices}">
+                             <td th:text="${invoice.invoiceDate}">
+                             <td th:text="${invoice.storeCode}"></td>
+				        	 <td th:text="${invoice.storeName}"></td>
+				        	 <td th:text="${invoice.invoiceType}"></td>
+				        	 <td th:text="${invoice.invoiceAmount}"></td>
+				        	 <td th:text="${invoice.Status}"></td>   
+                             <td>
+                                   <li><a th:href="@{/viewinvoicedetails/{id}(id=${invoice.id})}"><i class="fa-regular fa-eye"></i></a></li>
+                                   <li title="Comment">
+                                   	  <a th:href="@{/invoice/pop/{id}(id=${invoice.id})}" >
+                                       	 <i class="fa-regular fa-comment"></i>
+                                      </a>
+                                   </li>
+          	       <span class="action-icon delete-icon">
+    <a th:href="@{/invoice/delete/{id}(id=${invoice.id})}" onclick="return confirmDelete('${invoice.id}')">🗑</a></span>
+          	       
+      		  </td>
+   		   </tr>
+              	   </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+       
+<script>
+
+	function openPopup(popupId) {
+    var popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = "block";
+    }
+}
+
+function showDeleteConfirmationPopup() {
+    var deleteConfirmationPopup = document.getElementById("deleteConfirmationPopup");
+    deleteConfirmationPopup.style.display = "block";
+    document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+}
+
+function cancelDelete() {
+    // Handle cancel behavior here, for example, close the delete confirmation popup
+    closeDeleteConfirmationPopup();
+    return false;
+}
+
+function closeDeleteConfirmationPopup() {
+    var deleteConfirmationPopup = document.getElementById("deleteConfirmationPopup");
+    deleteConfirmationPopup.style.display = "none";
+    document.body.style.backgroundColor = "";
+}
+
+var dropdown = document.getElementById("stateDropdown");
+dropdown.addEventListener("change", function () {
+    var selectedState = dropdown.options[dropdown.selectedIndex].value;
+    console.log("Selected State: " + selectedState);
+    populateCities(); // Add this line to update cities dropdown
+    // You can perform further actions with the selected state
+});
+
+function filterStates() {
+    var input = document.getElementById("stateInput");
+    var filter = input.value.toUpperCase();
+    var dropdown = document.getElementById("stateDropdown");
+    var options = dropdown.getElementsByTagName("option");
+
+    for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+        option.style.display = option.value.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+    }
+}
+
+var citiesByState = {
+    // Your cities by state data here
+};
+
+function populateCities() {
+    var stateDropdown = document.getElementById("stateDropdown");
+    var cityDropdown = document.getElementById("cityDropdown");
+    var selectedState = stateDropdown.value;
+
+    // Clear existing options
+    cityDropdown.innerHTML = "";
+
+    // Populate cities based on the selected state
+    if (citiesByState[selectedState]) {
+        citiesByState[selectedState].forEach(function (city) {
+            var option = document.createElement("option");
+            option.value = city;
+            option.text = city;
+            cityDropdown.add(option);
+        });
+    }
+}
+
+function confirmDelete(id) {
+    var confirmation = confirm("Are you sure you want to delete this invoice?");
+    if (confirmation) {
+        window.location.href = '/invoice/delete/' + id;
+    } else {
+        return false;
+    }
+}
+
+function filterByInvoiceType() {
+    var selectedInvoiceType = document.getElementById("invoicedropdown").value;
+    var tableRows = document.getElementById("clientsTableBody").getElementsByTagName("tr");
+
+    for (var i = 0; i < tableRows.length; i++) {
+        var row = tableRows[i];
+        var invoiceType = row.getElementsByTagName("td")[2].innerText; // Assuming 2 is the index of the Invoice Type column
+
+        if (selectedInvoiceType === "All" || invoiceType === selectedInvoiceType) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

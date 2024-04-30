@@ -1,0 +1,213 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.main-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    background:linear-gradient(to top, rgba(0,0,0,0.2)20%,rgba(0,0,0,0.2)20%), url(Desk-bg.jpg);
+    background-position: center;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 20%;
+    height: auto;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+
+.logo-section {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: top;
+    margin-bottom: 10%;
+    /* background-color: #ddd; */
+
+}
+
+.logo-section img {
+    width: 60%;
+    height: 80%;
+}
+
+.sbbuttons {
+    width: 100%;
+    height: 80%;
+    /* background: linear-gradient(180deg ,#ef4d7800 0%,#3d1b63 70%,#3d1b63 100%); */
+    margin-top: 20%;
+}
+
+
+ .sbbuttons > button {
+    width: 90%;
+    padding: 10px;
+    margin: 5% 0;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+ }
+
+.sbbuttons>button:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+}
+
+
+.submenu {
+    list-style-type: none;
+    padding: 0;
+    display: none;
+    margin: 0;
+}
+
+.submenu li {
+    padding: 8px;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 60%;
+    margin-left: 12%;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.submenu li:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+}
+
+.submenu.show {
+    display: block;
+}
+
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100vh;
+
+    
+}
+
+.admin-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 65%;
+    width: 60%;
+    background:  linear-gradient(-150deg, #3d1b63, #ef4d79);
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+
+}
+
+.title h2{
+    margin: 0 5% ;
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    color: #fff;
+}
+
+.title h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 30px;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(135deg, #3d1b63, #ef4d79);
+  
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: first baseline;
+    flex-direction: column;
+    height: 80%;
+    width: 80%;
+    border-radius: 10px;
+    color: white;
+    background-color: #ddd;
+    border: 2px solid #fff;
+}
+
+.form > .form-dts{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    justify-content:center;
+    align-items: first baseline;
+    color: #3d1b63;
+}
+
+.form li{
+    display: flex;
+    justify-content: right;
+    align-items:center;
+    height: 15%;
+    width: 100%;
+    
+}
+
+.form li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    width: 20%;
+    height: 60%;
+    margin: 0 2% ;
+    border-radius: 30px;
+    background:linear-gradient(150deg, #3d1b63, #ef4d79);
+
+}
+
+.form li a:hover{
+    background:linear-gradient(-150deg, #3d1b63, #ef4d79);
+}
+

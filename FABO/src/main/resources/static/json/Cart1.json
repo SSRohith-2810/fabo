@@ -1,0 +1,570 @@
+[
+    {
+        "product_name": "Fabo Products",
+        "product_description": "1.5″*224 mtrs Taffeta Rolls",
+        "price": "₹ 485.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "white-roll.jpg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "12 Pounds iron box",
+        "price": "₹3,900.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "12-pounds-iron-box.jpg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "14 Pounds iron box",
+        "price": "₹4,200.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "14-ponds-iron-box-.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Acura Soft (20kg)",
+        "price": "₹4,200.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "WhatsApp-Image-2023-06-21-at-15.17.081.jpeg"
+    },
+    {
+        "product_name": "Uncategorized",
+        "product_description": "Acura Soft (5kg)",
+        "price": "₹1,050.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "acura-soft.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Acura Wash(20kg)",
+        "price": "₹6,200.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "WhatsApp-Image-2023-06-21-at-15.17.08.jpeg"
+    },
+    {
+        "product_name": "Uncategorized",
+        "product_description": "Acura Wash(20kg)",
+        "price": "₹6,200.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "Acura-wash.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "BC-Starch(5kg)",
+        "price": "₹1,400.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo1.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Blankotex (5kg)",
+        "price": " ₹5,750.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo2.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Bleach (5kg)",
+        "price": "₹150.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "color-fixer.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Butterfly Clips 100 pcs",
+        "price": "₹60.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo3.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Collar Guards 500 pcs",
+        "price": "₹400.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo4.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Dry X Licker",
+        "price": "₹1,250.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo5.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "External Stand for Barcode Printer",
+        "price": "₹1,600.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "stand.jpg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Fabo T shirt (L)",
+        "price": "₹500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo6.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Fabo T Shirt (M)",
+        "price": "₹500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo7.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Fabo T Shirt (XL)",
+        "price": "₹500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo7.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Fabo T Shirt (XXL)",
+        "price": "₹500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo7.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Fabo T Shirt (XXXL)",
+        "price": "₹500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo7.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Fabo White Bags 100 pcs",
+        "price": "₹2,500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "bag.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Ferrol 500ml",
+        "price": "₹2,500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "ferrol.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Frankopal Maxx 1 Ltr",
+        "price": "₹615.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo8.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Funnels (big)",
+        "price": "₹46.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo9.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Hangers 100 pcs",
+        "price": "₹500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "hangers.jpg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Iron Table",
+        "price": "₹5,600.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "iron-table.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Khatti-Color Fixer (5kg)",
+        "price": "₹1,000.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "iron-table.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Khatti-Color Fixer (5kg)",
+        "price": "₹1,000.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "color-fixer (1).jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Lacol 1 Ltr",
+        "price": "₹1,650.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo10.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Laundry Bag (blue) 50 pcs",
+        "price": "₹2,000.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo11.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Laundry Bags (red) 50 pcs",
+        "price": "₹2,000.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo12.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Lint Roller",
+        "price": "₹200.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "lint-roller.jpg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Lipasol l 1 Ltr",
+        "price": "₹1,850.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo13.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Net Mesh Bag",
+        "price": "₹950.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "net-bags.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Oil Cans (small) 12 pcs",
+        "price": "₹138.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo14.jpeg"
+    },
+    {
+        "product_name": "Uncategorized",
+        "product_description": "Packing Strips 1000",
+        "price": "₹2,500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo15.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Pickup bag",
+        "price": "₹1,500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo16.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Plastic Brush",
+        "price": "₹46.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo17.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "PP FLAP Tap Packing Covers 1 Kg",
+        "price": "₹200.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo18.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "PP Roll (27kg)",
+        "price": "₹4,860.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo19.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Prime Protect 5kg",
+        "price": "₹2,125.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo20.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Prime Set (10kg)",
+        "price": " ₹2,250.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo21.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Prime Superox 10kg",
+        "price": "₹2,100.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo22.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Purasol 1 Ltr",
+        "price": "₹1,650.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo23.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Quickol 1 Ltr",
+        "price": "₹1,650.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo24.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Saree Cards 1000 pcs",
+        "price": "₹3,650.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo25.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Shirt Cards 1000 pcs",
+        "price": "₹3,650.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo26.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Silicone Brush",
+        "price": "₹360.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo27.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Softener Machine",
+        "price": "₹25,000.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo28.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Sorry Cards 100 pcs",
+        "price": "₹120.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo29.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Spotting V1",
+        "price": "₹1,200.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo30.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Spotting V2",
+        "price": "₹1,300.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo31.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Spotting V3",
+        "price": "₹1,300.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo32.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Spray Bottle (set 3 pcs)",
+        "price": "₹138.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo33.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Stabilizer",
+        "price": "₹20,000.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo34.jpg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Stash AS 1071 (fabric stiffner) 5kg",
+        "price": "₹1,500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo35.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Stash CC 500 (cuff and colar cleaner) 5kg",
+        "price": "₹812.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo36.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Stash SOFT FP 200 (fabric softener) 5kg",
+        "price": "₹1,500.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo37.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Tag Gun Needles 5 pcs",
+        "price": "₹250.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo38.jpg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Tag pins 19mm",
+        "price": "₹160.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo39.jpeg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Tag Printer",
+        "price": "₹11,660.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo40.jpg"
+    },
+    {
+        "product_name": "Fabo Products",
+        "product_description": "Thank You Cards 100 pcs",
+        "price": "₹120.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo41.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Viva Color 5kg",
+        "price": "₹2,550.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo42.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Viva Geniox (5kg)",
+        "price": "₹3,250.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo43.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Viva OdoSorb (5kg)",
+        "price": "₹4,250.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo44.jpeg"
+    },
+    {
+        "product_name": "Uncategorized",
+        "product_description": "Viva Oleo 5kg",
+        "price": "₹3,250.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo45.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Viva Silk (5kg)",
+        "price": "₹4,050.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo46.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Viva Starch (10kg)",
+        "price": " ₹2,900.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo47.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Viva Top 5kg",
+        "price": "₹4,145.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo48.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Washing Glouves (1 pair)",
+        "price": "₹150.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo49.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Wet X Finish (1 Ltr)",
+        "price": "₹1,100.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo50.jpeg"
+    },
+    {
+        "product_name": "Chemicals",
+        "product_description": "Wet X Wash (1 Ltr)",
+        "price": "₹950.00",
+        "TotalPrice": "",
+        "quantity": 1,
+        "image_url": "photo51.jpeg"
+    }
+]

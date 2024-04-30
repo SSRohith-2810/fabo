@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/clientaddsupport.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+    <title>FABO</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <body>
+        <img id="logo" th:src="@{/images/fabo.logo.png}" alt="Logo">
+        <form id="invoiceForm" th:action="@{/clientsupportview}" th:object="${clientSupport}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <h1>Add Support Request</h1>
+
+  <label for="storeDropdown">Select Store Code</label> 
+ <input type="text" placeholder="Store Code" name="storeCode" id="selectedStoreCode" th:value="${client.storeCode}" readonly>
+ 
+  <label for="storeDropdown">Store Name</label>
+<input type="text" placeholder="Store Name" name="storeName" id="storeName" th:value="${client.storeName}" readonly>
+         
+            <label for="request-type">Select Support Request Type *</label>
+            <input type="text" id="request-type" name="supportRequestType" list="invoicedropdown" placeholder="Select Support Request" required>
+            <datalist id="invoicedropdown">
+                <!-- Options for support request types here -->
+                <option value="Machines"></option>
+                <option value="Washings"></option>
+                <option value="Ironing"></option>
+                <option value="Printers"></option>
+               <option value="General"></option>
+                <!-- Add more options as needed -->
+            </datalist>
+            
+            <label for="date">Date *</label>
+            <input type="date" id="productDate" readonly th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" name="Date"  oninput="validateDate()" placeholder="Enter Date" required max="?php echo date('Y-m-d', strtotime('-1 day')); ?">
+             <label for="phone">Phone Number *</label>
+			<input type="tel" placeholder="Store Contact" name="phoneNumber" id="phoneNumber" oninput="validateNumericalInput(this)" th:value="${client.storeContact}" required>
+
+            <label for="issue-subject">Issue Subject *</label>
+            <textarea id="issuesubject" th:field = "*{issueSubject}" name="issuesubject" rows="2" placeholder=" Issue Subject" required></textarea>
+            <label for="issue-description">Issue Description *</label>
+            <textarea id="issuedescription" th:field = "*{issueDescription}" name="issuedescription" rows="4" placeholder=" Issue Description" required></textarea>
+             <label class="upload-link" for="file-upload">Upload Images(+) *</label>
+        <div class="file-upload">
+            <input type="file" id="file-upload" name="files" accept="image/*,video/*" multiple required>
+        </div>
+        <div class="file-list"></div>
+            <div class="button-container">
+                <button type="submit">Submit</button>
+               <button onclick="window.location.href='/clientshome'" type="button">Close</button>
+            </div>
+        </form>
+        <script>
+           
+            document.getElementById('phone').addEventListener('input', function(event) {
+                let inputValue = event.target.value;
+                // Remove any non-numeric characters from the input value
+                let numericValue = inputValue.replace(/\D/g, '');
+                // Truncate the input to contain only 10 digits
+                numericValue = numericValue.slice(0, 10);
+                // Update the input field value to contain only numeric characters and at most 10 digits
+                event.target.value = numericValue;
+                
+                // Validate if the input contains exactly 10 digits
+                if (numericValue.length !== 10) {
+                    event.target.setCustomValidity("Phone number must be exactly 10 digits.");
+                } else {
+                    event.target.setCustomValidity("");
+                }
+            });
+
+            function validateForm() {
+            let storeName = document.getElementById('store-name').value;
+
+            // AJAX call to validate store name
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "/check-store-name", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let response = JSON.parse(xhr.responseText);
+                    if (!response.exists) {
+                        alert("Store name not found in the database.");
+                        return false; // Prevent form submission
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({storeName: storeName}));
+
+            return true; // Allow form submission (AJAX validation happens asynchronously)
+        }
+        </script>
+        
+        <script>
+        document.getElementById('file-upload').addEventListener('change', function(event) {
+            const fileList = event.target.files;
+            const fileDisplay = document.querySelector('.file-list');
+
+            Array.from(fileList).forEach((file, index) => {
+                const fileId = `file-${index}`;
+                const buttonId = `button-${index}`;
+
+                const item = document.createElement('div');
+                item.classList.add('file-item');
+                item.innerHTML = `<span id="${fileId}">${file.name}</span> <button id="${buttonId}" onclick="removeFile('${fileId}', '${buttonId}', event)">X</button>`;
+                fileDisplay.appendChild(item);
+            });
+        });
+
+        function removeFile(fileId, buttonId, event) {
+            event.preventDefault(); // Prevent default action for the remove button
+
+            // Extract the file name from the fileId
+            const fileName = document.getElementById(fileId).innerText; // Assuming the fileId corresponds to the <span> element containing the file name
+
+            console.log("File Name:", fileName);
+
+            // Remove the file item from the display
+            const fileItem = document.getElementById(fileId);
+            fileItem.parentElement.removeChild(fileItem);
+            console.log("Removed File Item:", fileItem);
+
+            // Remove the corresponding button
+            const button = document.getElementById(buttonId);
+            button.parentElement.removeChild(button);
+            console.log("Removed Button:", button);
+
+            // Remove the file from the input
+            const input = document.getElementById('file-upload');
+            const fileList = input.files;
+            const newFileList = Array.from(fileList).filter(file => {
+                console.log("File Name in Filter:", file.name);
+                console.log("File Name to Remove:", fileName);
+                return file.name !== fileName;
+            });
+            console.log("New File List after Filtering:", newFileList);
+
+            // Create a new FileList object
+            const dataTransfer = new DataTransfer();
+            newFileList.forEach(newFile => dataTransfer.items.add(newFile));
+            console.log("New File List after Adding to DataTransfer:", dataTransfer.files);
+
+            input.files = dataTransfer.files;
+        }
+
+
+        </script>
+        
+        <script>
+    $(document).ready(function() {
+        $("#selectedStoreCode").on("input", function() {
+            var selectedCode = $(this).val();
+            var userStoreCode = $("#userStoreCode").val(); // Get the user's store code from the hidden input field
+
+            // Check if the entered store code matches the user's store code
+            if (selectedCode !== userStoreCode) {
+                $("#storeCodeError").show();
+            } else {
+                $("#storeCodeError").hide();
+            }
+        });
+    });
+</script>
+
+<!-- Modify your input field -->
+<input type="hidden" id="userStoreCode" value="${userStoreCode}">
+
+     
+        
+         <script>
+    $(document).ready(function() {
+        // Event listener for the input change
+        $("#selectedStoreCode").on("input", function() {
+            // Get the selected store code
+            var selectedCode = $(this).val();
+
+            // Find the corresponding store name and store contact using data-store-name and data-store-contact attributes
+            var selectedStore = $("#storeDropdown option[value='" + selectedCode + "']");
+            var selectedStoreName = selectedStore.attr("data-store-name");
+            var selectedStoreContact = selectedStore.attr("data-store-contact");
+
+            // Update the store name field and store contact field
+            $("#storeName").val(selectedStoreName);
+            $("#phoneNumber").val(selectedStoreContact);
+
+            // Check if the entered store code exists in the dropdown
+            var storeCodes = $("#storeDropdown option").map(function() {
+                return $(this).val();
+            }).get();
+            
+            if (!storeCodes.includes(selectedCode)) {
+                // If the entered store code is not in the dropdown, display an error message
+                $("#storeCodeError").show();
+            } else {
+                // If the entered store code is in the dropdown, hide the error message
+                $("#storeCodeError").hide();
+            }
+        });
+
+        // Event listener for the phone number input
+        $("#phoneNumber").on("input", function() {
+            // Remove any non-numeric characters
+            var phoneNumber = $(this).val().replace(/\D/g, '');
+            
+            // Limit the phone number to 10 digits
+            phoneNumber = phoneNumber.slice(0, 10);
+            
+            // Update the value of the phone number input
+            $(this).val(phoneNumber);
+        });
+    });
+</script>
+
+
+
+        
+        <script>
+        function validateDate() {
+            var inputDate = document.getElementById("productDate").value;  // Use the correct ID "productDate"
+            var today = new Date().toISOString().split('T')[0];  // Get today's date in "yyyy-mm-dd" format
+        
+            if (inputDate > today) {
+                alert("Future dates are not allowed");
+                document.getElementById("productDate").value = today;  // Set the input to today's date using the correct ID "productDate"
+            }
+        }
+        </script>
+        
+        <script>
+        function validateNumericInput(input) {
+            // Remove non-numeric characters from the input value
+            let numericValue = input.value.replace(/\D/g, '');
+        
+            // Limit the numeric value to 10 characters
+            numericValue = numericValue.slice(0, 10);
+        
+            // Update the input value with the processed numeric value
+            input.value = numericValue;
+        }
+        
+        </script>
+        
+        
+        </body>
+        </html>

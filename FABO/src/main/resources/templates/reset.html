@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.mainsheet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background:linear-gradient(to top, rgba(0,0,0,0.2)20%,rgba(0,0,0,0.2)20%), url("/images/For.jpg");
+    background-position: center;
+    background-size: cover;
+    /* background-color: red; */
+}
+
+.subsheet{
+    width: 50%;
+    height: 80%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); */
+}
+
+
+
+.logo{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    /* background-color: red; */
+    /* background-color: black; */
+    /* margin-left: 20px; */
+}
+
+.image{
+    width: 20%;
+    height: 90%;
+    margin-left: 10px;
+}
+
+.logo img{
+    width: 60%;
+    height: 80%;
+}
+
+.form{
+    width: 100%;
+    height: 85%;
+    /* background-color: #ddd; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Add these styles to your existing stylesheet or create a new one */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background:linear-gradient(135deg, #3d1b63, #ef4d79);
+    border: 2px solid #fff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input[type="submit"] {
+    background:linear-gradient(-135deg, #3d1b63, #ef4d79);
+    color: white;
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+
+input[type="submit"]:hover {
+    transition: 0.1s ease-in-out;
+    scale: 1.05;
+    background-color: #45a049;
+    background:linear-gradient(135deg, #3d1b63, #ef4d79);
+}
+h1{
+    color: #fff;
+}
+
+/* Add additional styles as needed */
+
+/* Media Queries for responsive design */
+@media only screen and (min-width: 2560px) {
+    .subsheet {
+        width: 80%;
+    }
+
+    .logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    .form {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .subsheet {
+        width: 80%;
+    }
+
+    .logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    .form {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .subsheet {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="mainsheet">
+        <div class="logo">
+            <div class="image">
+                <img th:src="@{/images/fabo.logo.png}" alt="">
+            </div>
+        </div>
+        <div class="heading">
+            <h1>Reset Password</h1>
+        </div>
+        <div class="subsheet">
+            <div class="form">
+                <form th:action="@{/changePassword}" method="POST" onsubmit="return validateForm()">
+    <label for="oldPassword">Old Password:</label>
+    <input type="password" id="oldPassword" name="oldPassword" required>
+
+    <label for="newPassword">New Password:</label>
+    <input type="password" id="newPassword" name="newPassword" required>
+
+    <label for="confirmPassword">Re-Enter New Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+    <!-- Display error message if any -->
+    <p th:if="${error}" class="error" th:text="${error}"></p>
+
+    <input type="submit" value="Confirm">
+</form>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

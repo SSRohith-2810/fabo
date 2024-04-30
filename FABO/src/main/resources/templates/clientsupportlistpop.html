@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width:100vw;
+            height:100vh;
+            /* background-color: #ef4d79; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.comment-popup {
+    /* display: none; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background:linear-gradient( 135deg, #3d1b63, #ef4d79);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.comment-popup h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.comment-popup textarea {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    margin-bottom: 15px;
+    resize: none;
+    background-color: #ddd;
+    border: 2px solid white;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.comment-popup div {
+    margin-bottom: 10px;
+}
+
+.comment-popup label {
+    margin-left: 5px;
+    color: #fff;
+}
+
+.comment-popup button {
+    background:linear-gradient( 135deg, #3d1b63, #ef4d79);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin-right: 10px;
+    float: right;
+}
+
+.comment-popup button:last-child {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 5px;
+}
+    </style>
+</head>
+<body>
+	 <form th:action="@{/saveCloseComment}"  method="POST">
+	  <input type="hidden" name="id" th:value="${clientSupport.id}" />
+    <div class="overlay" id="overlay2"></div>
+    <div class="comment-popup" id="commentPopup2">
+        <h2>Close Support Request</h2>
+        <textarea id="commentText" name="closeComment" placeholder="Enter your comment here"></textarea>
+        <div>
+            <input type="checkbox" name="close" id="markAsPaid" value="Closed"/>
+            <label for="markAsPaid">Mark as Closed</label>
+        </div>
+       
+        <button>Send</button>
+        <a th:href="@{/viewclientsupport}"><button>Close</button></a>
+    </div>
+</form>
+</body>
+</html>

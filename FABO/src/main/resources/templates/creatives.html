@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/fabo.css}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+    <title>FABO</title>
+    <style>
+    body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.main-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    background:linear-gradient(to top, rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("/images/Desk-bg.jpg");
+    background-position: center;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 20%;
+    height: auto;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+   
+}
+
+
+.logo-section {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: top;
+    margin-bottom: 10%;
+    /* background-color: #ddd; */
+
+}
+
+.logo-section img {
+    width: 60%;
+    height: 80%;
+}
+
+.sbbuttons {
+    width: 100%;
+    height: 80%;
+    /* background: linear-gradient(180deg ,#ef4d7800 0%,#3d1b63 70%,#3d1b63 100%); */
+    margin-top: 20%;
+}
+
+button li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+ .sbbuttons > button {
+    width: 95%;
+    padding: 10px;
+    margin: 5% 03%;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+ }
+
+ .sbbuttons>button li{
+    display: flex;
+}
+
+button li a{
+    color: white;
+    text-decoration: none;
+    width: 100%;
+}
+
+.sbbuttons>button:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    letter-spacing: 2px;
+}
+
+
+
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+
+   
+}
+.cards {
+    height: 340px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 98%;
+    height: 98%;
+    border-radius: 10px;
+    border: 2px solid white;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 220px;
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.5s ease; 
+    background: linear-gradient(to bottom right, #8fa48f, #e9f1e9);
+    padding-bottom: 30px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover{
+    scale: 1.05;
+    transition: 0.1s ease-in-out;
+}
+.card img {
+    max-width: 90%;
+    /* max-height: calc(100% - 80px); / / Remove or adjust this line */
+    border-radius: 8px;
+    display: block;
+    margin: 10px auto;
+}
+
+.card h2{
+    color: white;
+    font-size: 20px;
+}
+.download-button {
+
+    margin-top: 40px; /* Adjust the margin to move the download button down */
+}
+.upload-button,
+.delete-button {
+    border-radius: 10px;
+    width: calc(50% - 5px); /* Adjust button width */
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63); /* Default button color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: 2px solid #fff;
+}
+.upload-button:hover,
+.download-button:hover,
+.choose-file-button:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    scale: 1.08;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    border-radius: 15px;
+}
+
+
+
+select {
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    background-color: #ddd;
+    color: #fff;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+   
+
+}
+
+
+
+select option {
+    padding: 8px;
+    outline: none;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);   
+    color: #3d1b63;
+    border: 2px solid white;
+    margin-top: 2px;
+   
+    
+
+}
+
+
+.dropdown {
+    position: absolute;
+    display: none;
+    top: 43%;
+    left: 40px;
+    width: 15%;
+    border: 2px solid white;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    
+}
+
+.sidebar >button{
+    width: 95%;
+    padding: 10px;
+    margin: 5% 03%;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar > button:hover{
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    scale: 1.05;
+    transition: 0.1s ease-in-out;
+}
+.preview-button {
+    border-radius: 10px;
+    width: calc(50% - 5px);
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: 2px solid #fff;
+}
+
+.preview-button:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    transform: scale(1.08);
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    align-items: center;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Update the background color for the dropdown selection button */
+select {
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    background-color: #ddd; /* Change this to your desired color */
+    color: #fff;
+    align-items: center;
+    text-align: center;
+}
+/* Dropdown options */
+select option {
+    padding: 8px;
+    outline: none;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);   
+    color: #3d1b63;
+    border: 2px solid white;
+    margin-top: 2px;
+}
+
+/* Change color on hover for dropdown options */
+select option:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    color: white;
+}
+form{
+display:flex;
+flex-direction:row;
+}
+
+    
+    </style>
+</head>
+<body>
+    <div class="main-page">
+    <form th:action="@{/upload/store}"  method="POST" enctype="multipart/form-data">
+        <!-- Side bar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <img th:src="@{/images/fabo.logo.png}" alt="Your Logo">
+            </div>
+            
+            <div class="sbbuttons">
+
+                <div class="dropdown" id="dropdown1"></div>
+                <select name ="category" id="dropdown" required>
+                    <option value="Laundry">Laundry</option>
+                    <option value="Drycleaning">Drycleaning</option>
+                    <option value="Footwear Cleaning">Footwear Cleaning</option>
+                    <option value="Designerwear Cleaning">Designerwear Cleaning</option>
+                </select>
+            </div>
+
+            <!-- Add the dropdown content -->
+            <div class="dropdown" id="dropdown2">
+            </div>
+            <button type="submit">Submit</button>
+        </div>
+
+        <div class="section">
+            <div class="cards">
+                <div class="container">
+                    <div class="card" id="card1">
+                        <h2>Upload image</h2>
+                        <label for="fileInput1" class="upload-button">Upload</label>
+                        <input type="file" name=file1 class="image-upload" accept="image/*" id="fileInput1" style="display: none;" onchange="handleImageUpload(event, 1)">
+                        <div class="uploaded-image" id="uploadedImage1"></div>
+                        <button type="button"class="delete-button" id="deleteButton1" onclick="handleDeleteImage(1)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton1" onclick="handlePreviewImage(1)" style="display: none;">Preview</button>
+                    </div>
+                    <div id="myModal" class="modal">
+                        <span class="close">&times;</span>
+                        <img class="modal-content" id="previewImage">
+                    </div>   
+
+                    <div class="card" id="card2">
+                        <h2>Upload image</h2>
+                        <label for="fileInput2" class="upload-button">Upload</label>
+                        <input type="file" name=file2 class="image-upload" accept="image/*" id="fileInput2" style="display: none;" onchange="handleImageUpload(event, 2)">
+                        <div class="uploaded-image" id="uploadedImage2"></div>
+                        <button type="button" class="delete-button" id="deleteButton2" onclick="handleDeleteImage(2)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton2" onclick="handlePreviewImage(2)" style="display: none;">Preview</button>
+                    </div>
+
+
+                    <div class="card" id="card3">
+                        <h2>Upload image</h2>
+                        <label for="fileInput3" class="upload-button">Upload</label>
+                        <input type="file" name=file3 class="image-upload" accept="image/*" id="fileInput3" style="display: none;" onchange="handleImageUpload(event, 3)">
+                        <div class="uploaded-image" id="uploadedImage3"></div>
+                        <button type="button" class="delete-button" id="deleteButton3" onclick="handleDeleteImage(3)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton3" onclick="handlePreviewImage(3)" style="display: none;">Preview</button>
+                    </div>
+                    <div class="card" id="card4">
+                        <h2>Upload image</h2>
+                        <label for="fileInput4" class="upload-button">Upload</label>
+                        <input type="file" name=file4 class="image-upload" accept="image/*" id="fileInput4" style="display: none;" onchange="handleImageUpload(event, 4)">
+                        <div class="uploaded-image" id="uploadedImage4"></div>
+                        <button type="button" class="delete-button" id="deleteButton4" onclick="handleDeleteImage(4)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton4" onclick="handlePreviewImage(4)" style="display: none;">Preview</button>
+                    </div>
+                    <div class="card" id="card5">
+                        <h2>Upload image</h2>
+                        <label for="fileInput5" class="upload-button">Upload</label>
+                        <input type="file" name=file5 class="image-upload" accept="image/*" id="fileInput5" style="display: none;" onchange="handleImageUpload(event, 5)">
+                        <div class="uploaded-image" id="uploadedImage5"></div>
+                        <button type="button" class="delete-button" id="deleteButton5" onclick="handleDeleteImage(5)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton5" onclick="handlePreviewImage(5)" style="display: none;">Preview</button>
+                    </div>
+                    <div class="card" id="card6">
+                        <h2>Upload image</h2>
+                        <label for="fileInput6" class="upload-button">Upload</label>
+                        <input type="file" name=file6 class="image-upload" accept="image/*" id="fileInput6" style="display: none;" onchange="handleImageUpload(event, 6)">
+                        <div class="uploaded-image" id="uploadedImage6"></div>
+                        <button type="button" class="delete-button" id="deleteButton6" onclick="handleDeleteImage(6)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton6" onclick="handlePreviewImage(6)" style="display: none;">Preview</button>
+                    </div>
+                    <div class="card" id="card7">
+                        <h2>Upload image</h2>
+                        <label for="fileInput7" class="upload-button">Upload</label>
+                        <input type="file" name=file7 class="image-upload" accept="image/*" id="fileInput7" style="display: none;" onchange="handleImageUpload(event, 7)">
+                        <div class="uploaded-image" id="uploadedImage7"></div>
+                        <button type="button" class="delete-button" id="deleteButton7" onclick="handleDeleteImage(7)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton7" onclick="handlePreviewImage(7)" style="display: none;">Preview</button>
+                    </div>
+                    <div class="card" id="card8">
+                        <h2>Upload image</h2>
+                        <label for="fileInput8" class="upload-button">Upload</label>
+                        <input type="file" name=file8 class="image-upload" accept="image/*" id="fileInput8" style="display: none;" onchange="handleImageUpload(event, 8)">
+                        <div class="uploaded-image" id="uploadedImage8"></div>
+                        <button type="button" class="delete-button" id="deleteButton8" onclick="handleDeleteImage(8)" style="display: none;">Delete</button>
+                        <button type="button" class="preview-button" id="previewButton8" onclick="handlePreviewImage(8)" style="display: none;">Preview</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+   
+    
+
+                   
+                    
+     
+
+
+  <script>
+    // Function to handle image upload for a specific card
+// Function to handle image upload for a specific card
+function handleImageUpload(event, cardNumber) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    const uploadedImage = document.querySelector(`#uploadedImage${cardNumber}`);
+    const deleteButton = document.querySelector(`#deleteButton${cardNumber}`);
+    const previewButton = document.querySelector(`#previewButton${cardNumber}`);
+    const uploadLabel = document.querySelector(`#card${cardNumber} .upload-button`); // Modified selector here
+    const heading = document.querySelector(`#card${cardNumber} h2`); // Modified selector here
+
+    reader.onload = function(e) {
+        uploadedImage.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+        deleteButton.style.display = 'block';
+        previewButton.style.display = 'block';
+        uploadLabel.style.display = 'none';
+        heading.style.display = 'none';
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+// Function to handle deleting an image for a specific card
+function handleDeleteImage(cardNumber) {
+    const uploadedImage = document.querySelector(`#uploadedImage${cardNumber}`);
+    const deleteButton = document.querySelector(`#deleteButton${cardNumber}`);
+    const input = document.querySelector(`#fileInput${cardNumber}`);
+    const previewButton = document.querySelector(`#previewButton${cardNumber}`);
+    const uploadLabel = document.querySelector(`.card:nth-child(${cardNumber}) .upload-button`);
+    const heading = document.querySelector(`.card:nth-child(${cardNumber}) h2`);
+
+    uploadedImage.innerHTML = '';
+    deleteButton.style.display = 'none';
+    previewButton.style.display = 'none';
+    input.value = '';
+    uploadLabel.style.display = 'block';
+    heading.style.display = 'block';
+}
+
+// Function to handle previewing the image in the modal for a specific card
+function handlePreviewImage(cardNumber) {
+    const uploadedImage = document.querySelector(`#uploadedImage${cardNumber} img`);
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("previewImage");
+
+    modal.style.display = "block";
+    modalImg.src = uploadedImage.src;
+
+    const span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+}
+
+  </script>
+</body>
+</html>

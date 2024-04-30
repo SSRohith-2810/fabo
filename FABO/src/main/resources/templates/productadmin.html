@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center items vertically */
+            align-items: center; /* Center items horizontally */
+            height: 100vh; /* Take the full height of the viewport */
+            background-position: center;
+            background-size: cover;
+            background: linear-gradient(135deg, #3d1b63, #ef4d79);
+            /* background: linear-gradient(to top, rgba(0, 0, 0, 0.2)20%, rgba(0, 0, 0, 0.2)20%), url(For\ Fabulous\ Homes\ and\ Fabric\ \(1\).jpg); */
+        }
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+        }
+        .scrollable-section {
+            padding: 30px;
+            max-height: 500px;
+            overflow-y: auto;
+            position: relative; /* Position relative for absolute positioning of close button */
+            width: 80%; /* Adjust width as needed */
+            max-width: 600px; /* Limit maximum width */
+            background-color: #ddd;
+            border: 2px solid #fff;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hide the scrollbar */
+        .scrollable-section::-webkit-scrollbar {
+            width: 0; /* Hide scrollbar width */
+            height: 0; /* Hide scrollbar height */
+        }
+       
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px;
+            cursor: pointer;
+            font-size: large;
+            color: #3d1b63;
+        }
+
+        .close-btn:hover{
+            background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+            color: #fff;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            transition: 0.01s ease-in-out;
+            scale: 1.05;padding: 5px 10px;
+        }
+        .product-heading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px;
+            font-size: x-large;
+            border-bottom: 2px solid #f00; /* Red underline */
+            border-image: linear-gradient(to right, #ef4d79, #3d1b63); /* Two-color underline */
+            border-image-slice: 1;
+            margin-left: 10px;
+            color: #3d1b63;
+        }
+        .data-heading {
+            font-weight: bold;
+            color: #3d1b63;
+        }
+        .comment-box {
+            margin-bottom: 10px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        h6 {
+            font-size: 15px;
+            color: #3d1b63;
+            text-decoration: underline;
+        }
+        p{
+            color: #3d1b63;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img th:src="@{/images/fabo.logo.png}" alt="Your Logo" width="100" height="50">
+    </div>
+    <div class="scrollable-section">
+        <span class="product-heading">Product Request Details</span>
+        <a th:href="@{/viewproduct}" class="close-btn">X</a>
+
+        <h6 class="data-heading">Created By:</h6><span th:text="${addProductAdmin.uploadedBy}"></span></span>
+
+        <h6 class="data-heading">Store Code:</h6><span th:text="${addProductAdmin.storeCode}"></span>
+
+        <h6 class="data-heading">Store Name:</h6><span th:text="${addProductAdmin.storeName}"></span>
+
+        <h6 class="data-heading">Store Phone:</h6><span th:text="${addProductAdmin.storeContact}"></span>
+
+        <h6 class="data-heading">Product Request Date:</h6><span th:text="${addProductAdmin.Date}"></span>
+
+        <h6 class="data-heading">Product Request Type:</h6><span th:text="${addProductAdmin.productRequestType}"></span>
+
+        <h6 class="data-heading">Status:</h6><span th:text="${addProductAdmin.status}"></span>
+
+        <h6 class="data-heading">Subject:</h6><span th:text="${addProductAdmin.issueSubject}"></span>
+
+        <h6 class="data-heading">Description:</h6><span th:text="${addProductAdmin.issueDescription}"></span>
+
+        <h6 class="data-heading">Shipping Address:</h6><span th:text="${addProductAdmin.shippingAddress}"></span>
+    
+							
+        <h6 class="data-heading">Comments:</h6>
+        <div th:each="comment : ${adminProductCommentsList}" class="comment-box">
+           <p><b>Time :</b> <span th:text="${#dates.format(comment.timeAdded, 'hh:mm a')}"></span> | <b>Date:</b> <span th:text="${#dates.format(comment.dateAdded, 'yyyy-MM-dd')}"></span> | <b>Added By:</b> <span th:text="${comment.addedBy}"></span></p>
+					    <p><b>Reason :</b> <span th:text="${comment.Reason}"></span></p>
+					    <p><b>Visible to Client :</b> <span th:text="${comment.requestStatus ? 'yes' : 'no'}"></span></p>
+					    <p><b>Comment : </b><span th:text="${comment.adminProductComments}"></span></p>
+					</div>
+        <!-- More comment boxes go here -->
+    </div>
+
+    <script>
+        function closeSection() {
+            document.querySelector('.scrollable-section').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

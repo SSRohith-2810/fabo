@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+  
+        .main{
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to top, rgba(0,0,0,0.2)20%,rgba(0,0,0,0.2)20%), url("/images/suresh.png");
+            background-position: center;
+            background-size: 100% 100%;
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+        }
+       
+
+        .logosection{
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            width: 100%;
+            height: 30%;
+            /* background-color: red; */
+        }
+        .logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 15%;
+            height: 100%;
+            margin-left: 1%;
+        }
+        .logo>img{
+            width: 80%;
+            height: 90%;
+        }
+        .content{
+            width: 100%;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: blue; */
+        }
+         .greeting {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: transform 0.5s ease-in-out;
+            width: 60%;
+            height: 100%;    
+        }
+        .loginform{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            height: 100%;
+        }
+        .greeting > .faboimg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 30%;
+        }
+        .faboimg > img{
+            width: 300px;
+            height: 300px;
+            margin-top: 10%;
+        }
+        .greeting > .text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            /* background-color: red; */
+        
+        }
+
+        .greeting > .text >h3{
+            color: white;
+            width: 100%;
+            height: 100%;
+            font-size: 60px;
+            /* margin-top: -60px; */
+        }
+        .greeting:hover .faboimg > img {
+            transform: translateX(-150px);
+            transition: 0.9s ease-in-out;
+        }
+
+        .greeting:not(:hover) .faboimg > img {
+            transform: translateX(0);
+            transition: 0.9s ease-in-out;
+        }
+
+        .greeting:hover h3 {
+            transform: translateX(100px);
+            transition: 0.9s ease-in-out;
+        }
+
+        .greeting:not(:hover) h3 {
+            transform: translateX(0);
+            transition: 0.9s ease-in-out;
+            
+        }
+        .form {
+            width: 320px;
+            height: 380px;
+            background: linear-gradient(10deg, #ef4d79, #3d1b63);
+            position: absolute;
+            left: 68%;
+            top: 20%;
+            transform: translate(0%, -5%);
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid white;
+            box-shadow: 5px 5px 5px 2px #3e3e3e;
+        }
+
+        .form h2 {
+            width: 200px;
+            font-family: sans-serif;
+            text-align: center;
+            color:#ffff;
+            font-size: 30px;
+            border-radius: 10px;
+            margin: 2px 60px;
+            padding: 8px;
+          
+        }
+        .form h2:hover{
+            color: White;
+            letter-spacing: 3px;
+            transition: 0.2s ease-in-out;
+        }
+
+        .form input {
+            width: 330px;
+            height: 35px;
+            background: transparent;
+            border-bottom: 2px solid #fff;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            color: #fff;
+            background-color: transparent;
+            border-radius: 10px;
+            text-align: left;
+            padding: 0 10px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            margin-top: 50px;
+            font-family: sans-serif;
+            outline: none;
+        }
+        .form input:hover{
+            letter-spacing: 5px;
+            background-color: rgba(0,0,0,0.2);
+            transition: 0.3s ease-in-out;
+        }
+
+        .form input:focus {
+            border: 2px solid #fff;
+            transition: 0.1s;
+        }
+
+        ::placeholder {
+            color: #fff;
+            font-family: Arial;
+        }
+
+        .btnn {
+            width: 240px;
+            height: 40px;
+            background: linear-gradient(135deg, #ef4d79, #3d1b63);
+            margin-top: 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff;
+            border: 2px solid white;
+            transition: 0s ease;
+            margin: 20px 70px;
+        }
+
+        .btnn:hover {
+            background: linear-gradient(-135deg, #ef4d79, #3d1b63);;
+            color: #ef4d79;
+            border: 2px solid #fff;
+            transition: 0.2s ease-in;
+            letter-spacing: 2px;
+            scale: 1.05;
+        }
+
+        .btnn a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .fa-icon {
+            position: absolute;
+            top: 80%;
+            transform: translateY(-50%);
+            right: 15px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Style for the email and password input fields */
+        .input-field {
+            position: relative;
+        }
+/* 
+        .forgot-password-link:hover {
+        text-decoration: underline;
+        color: red;
+        transition: 0.3s ease-in-out;
+    } */
+
+    .forgot-password-link
+    {
+        color:rgb(243, 26, 26);
+        text-decoration: none;
+    }
+    .forgot-password-link:hover
+    {
+        color:#fff;
+        text-decoration: underline;
+        transition: 0.1s ease-in-out;
+    }
+
+        /* meadia queries */
+
+          /* For laptops and desktops */
+@media only screen and (min-width: 1024px) {
+    .main {
+        background-size: cover;
+    }
+
+    .logosection {
+        height: 15%;
+    }
+
+    .logo {
+        width: 10%;
+        margin-left: 2%;
+    }
+
+    .content {
+        height: 85%;
+    }
+
+    .greeting {
+        width: 50%;
+    }
+
+    .loginform {
+        width: 50%;
+    }
+
+    .form {
+
+        left:80%;
+        transform: translate(-50%, -5%);
+    }
+
+    .input-field input {
+        width: 300px;
+    }
+
+    .btnn {
+        width: 200px;
+    }
+
+    .fa-icon {
+            position: absolute;
+            top: 80%;
+            transform: translateY(-50%);
+            right:20px;
+            color: white;
+            cursor: pointer;
+        }
+}
+
+/* For tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .main {
+        background-size: cover;
+    }
+
+    .logosection {
+        height: 15%;
+    }
+
+    .logo {
+        width: 15%;
+        margin-left: 2%;
+    }
+
+    .content {
+        height: 85%;
+    }
+
+    .greeting {
+        width: 100%;
+        margin-left:15%;
+    }
+
+    .loginform {
+        width: 40%;
+        
+    }
+    .greeting h3 {
+        display: none;
+            
+        }
+    
+
+    .form {
+        text-align: center;
+        width:60%;
+        left: 50%;
+        transform: translate(-50%, -5%);
+    }
+    .form h2{
+       position: relative;
+       left:13%;
+    }
+    .input-field input {
+     width: 250px; 
+        width: 70%;
+    }
+
+    .btnn {
+        width: 180px;
+    }
+    .faboimg > img{
+        display: none;
+        }
+
+    
+    .fa-icon {
+            position: absolute;
+            top: 80%;
+            transform: translateY(-50%);
+            right:75px;
+            color: white;
+            cursor: pointer;
+        }
+
+}
+
+/* For mobiles */
+@media only screen and (max-width: 767px) {
+   
+
+     .logosection {
+        height: 15%;
+    }
+
+    .logo {
+        width: 20%;
+        margin-left: 2%;
+    }
+
+    .content {
+        height: 85%;
+        flex-direction: column;
+    }
+
+    .greeting {
+        width: 80%;
+    }
+
+    .loginform {
+        width:10vw;
+    }
+
+    .form {
+        left: 50%;
+        transform: translate(-50%, -5%);
+        width:80%;
+    }
+    .form h2{
+        position: relative;
+       left:-13%;
+    }
+    .input-field input {
+        width:90%;
+    }
+
+    .btnn {
+        width:70%;
+    }
+
+    
+    .fa-icon {
+            position: absolute;
+            top: 80%;
+            transform: translateY(-50%);
+            right:25px;
+            color: white;
+            cursor: pointer;
+        }
+
+}
+
+.alert-message {
+    color: red;
+}
+</style>
+</head>
+<body>
+ <form th:action="@{/authenticateTheUser}" method="POST" onsubmit="return validateForm(event)">
+    <div class="main">
+        <div class="logosection">
+            <div class="logo">
+                <img th:src="@{/images/fabo-logo-1.png}" alt="">
+            </div>
+        </div>
+        <div class="content">    
+            <div class="greeting">
+                <div class="faboimg">
+                    <img th:src="@{/images/Untitled_design__5_-removebg-preview.png}" alt="">
+                </div>
+                <div class="text">
+                    <h3>For Fabulous Homes & Fabrics </h3>
+                </div>          
+            </div>
+            <div class="loginform">
+                <div class="form">
+                    <h2>Sign-in</h2>
+                    <div class="input-field">
+                        <input type="text" name="username" placeholder="Enter UserName Here" class="input-field" id="email-input">
+                        <span class="fa-icon" id="email-icon"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="password" placeholder="Enter Password Here" class="input-field" id="password-input">
+                        <span class="fa-icon" id="password-icon"><i class="fas fa-lock"></i></span>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 10px;">
+                        <a href=emailLink class="forgot-password-link">Forgotten Password?</a>
+                    </p>
+                   <p class="alert-message" th:if="${param.error}" style="color:white; text-align:center;">Invalid email or password. </p>
+                   <button class="btnn" type="submit">Login</button>
+                </div>
+            </div>           
+        </div>
+
+       
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+<script>
+    function validateForm(event) {
+        var username = document.getElementById('email-input').value.trim();
+        var password = document.getElementById('password-input').value.trim();
+        
+        // Check if username and password are empty
+        if (username === '' || password === '') {
+            alert('Username and password are mandatory.');
+            event.preventDefault(); // Prevent form submission
+            return false;
+        }
+        
+        return true; // Submit the form if validation passes
+    }
+</script>
+</body>
+</html>

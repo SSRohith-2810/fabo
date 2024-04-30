@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/clientsupportlist.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <title>FABO</title>
+</head>
+<body>
+    <div class="container">
+        <img th:src="@{images/fabo.logo.png}" alt="Logo" class="logo">
+        
+  <div class="addinvoice-btn-p">
+            <a href=clientsupport><button class="addinvoice-btn">Add Support request</button></a>
+           </div>
+           
+        <div class="middle-section">
+            <div class="heading">
+                <h2>Manage Support Requests</h2>
+            </div>
+
+            <div class="close-btn">
+                <a href=clientshome><i class="fas fa-times"></i></a>
+            </div>
+
+           <div class="filters">
+                    <input type="date" id="fromdate" class="filter-select">
+                    <input type="date" id="todate" class="filter-select">
+                
+                
+                <input type="search" class="filter-select" placeholder="Select Support " list="Supportdropdown" id="supportSearch">
+                <datalist id="Supportdropdown">
+                    <option value="Machines">Machines</option>
+                    <option value="Washing">Washing</option>
+                    <option value="Ironing">Ironing</option>
+                    <option value="Printers">Printers</option>
+                    <option value="General">General</option>
+                </datalist>
+
+                <input type="search" class="filter-select" placeholder="Select Status" list="statusDropdown" id="satusSearch">
+<datalist id="statusDropdown">
+    <option value="New">New</option>
+    <option value="In-Progress">In-Progress</option>
+    <option value="Closed">Closed</option>
+</datalist>
+
+                
+                <div class="search-bar" id="search">
+                    <input type="search" placeholder="Search..." id = "Search">
+                    <!-- <i class="fas fa-search"></i>-->
+                </div>
+                 <button class="clear-btn" type="button" onclick="window.location.href='/viewclientsupport'">Clear</button>
+            </div>
+            
+            <div class="table-container">
+                <table id = "clientsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Support Request ID</th>
+                            <th>Store Code</th>
+                            <th>Store Name</th>
+                            <th>Support Request Type</th>
+                            <th>Issue Subject</th>
+                            <th>Status</th>
+                            <th class="action">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clientsTableBody">
+                        <tr th:each="clientSupport : ${clientSupports}">
+                            <td th:text="${clientSupport.Date}"></td>  
+                            <td th:text="${clientSupport.supportRequestId}"></td> 
+                            <td th:text="${clientSupport.storeCode}"></td>
+                             <td th:text="${clientSupport.storeName}"></td>   
+					<td th:text = "${clientSupport.supportRequestType}"></td>
+					<td th:text="${clientSupport.issueSubject}"></td>
+                     <td th:text="${clientSupport.status}"></td>                
+                             
+               
+                             <td class="action">
+                                 <i class="fas fa-solid fa-bars"></i>
+                                 <div class="popup">
+                                    <a th:href = "@{/viewsupportclient/{id}(id=${clientSupport.id})}"  style="cursor: pointer;">Add Comments</a>
+                                            
+                                    <a th:href = "@{/close/{id}(id=${clientSupport.id})}" th:if="${clientSupport.status == 'New' || clientSupport.status == 'Open' || clientSupport.status == 'In-Progress' || clientSupport.status == 'Re-Open'}">Close Support Request</a>
+                                       <a th:href="@{/saveClientSupportImages/{id}(id=${clientSupport.id})}">Upload New Attachments</a>    
+                                      <a th:href = "@{/clientsupportDetails/{id}(id=${clientSupport.id})}">View Detailed Info</a>
+                                    
+                                </div>
+                             </td>
+                             
+                             
+                         </tr>
+
+                         
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function () {
+    // DataTable initialization
+    var table = $('#clientsTable').DataTable({
+        "paging": true,
+        "pageLength": 4,
+        "dom": '<"top"i>rt<"bottom"flp><"clear">',
+        "language": {
+            "info": "Showing _START_ to _END_ of _TOTAL_ entries"
+        }
+    });
+
+    // Filter by date range
+    $('#fromdate, #todate').on('change', function() {
+        var fromDate = $('#fromdate').val();
+        var toDate = $('#todate').val();
+
+        // Filter the date range
+        $.fn.dataTable.ext.search.push(
+            function(settings, data, dataIndex) {
+                var minDate = fromDate ? new Date(fromDate) : null;
+                var maxDate = toDate ? new Date(toDate) : null;
+                var currentDate = new Date(data[0]); // Assuming date is in the first column
+
+                if (
+                    (!minDate || currentDate >= minDate) &&
+                    (!maxDate || currentDate <= maxDate)
+                ) {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        // Redraw the table
+        table.draw();
+
+        // Remove the custom search function
+        $.fn.dataTable.ext.search.pop();
+    });
+
+    // Filter by store code
+    $('#storesearch').on('input', function () {
+        table.column(2).search(this.value).draw();
+    });
+
+    // Filter by support type
+    $('#supportSearch').on('input', function () {
+        table.column(4).search(this.value).draw();
+    });
+
+    // Filter by status
+    $('#satusSearch').on('input', function () {
+        table.column(6).search(this.value).draw();
+    });
+
+    // Global search
+    $('#Search').on('keyup', function () {
+        table.search(this.value).draw();
+    });
+});
+
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const actionMenus = document.querySelectorAll('.action');
+    
+            let lastClickedIcon = null;
+    
+            actionMenus.forEach(actionMenu => {
+                actionMenu.addEventListener('click', function(event) {
+                    const popup = actionMenu.querySelector('.popup');
+                    const clickedIcon = actionMenu.querySelector('.menu-icon');
+    
+                    if (popup) {
+                        if (clickedIcon === lastClickedIcon && popup.style.display === 'block') {
+                            // If the same icon is clicked again, close the popup
+                            popup.style.display = 'none';
+                            lastClickedIcon = null;
+                        } else {
+                            // Close all other popups
+                            closeAllPopups();
+                            // Toggle popup visibility
+                            popup.style.display = 'block';
+                            lastClickedIcon = clickedIcon;
+                        }
+                    }
+                    // Prevent the event from bubbling up to the document level
+                    event.stopPropagation();
+                });
+            });
+    
+            // Close popup when clicking anywhere on the document
+            document.addEventListener('click', function(event) {
+                const popups = document.querySelectorAll('.popup');
+                popups.forEach(popup => {
+                    // Check if the click target is within the popup or not
+                    if (!popup.contains(event.target)) {
+                        // Hide the popup if the click is outside
+                        popup.style.display = 'none';
+                        lastClickedIcon = null;
+                    }
+                });
+            });
+    
+            function closeAllPopups() {
+                const popups = document.querySelectorAll('.popup');
+                popups.forEach(popup => {
+                    popup.style.display = 'none';
+                });
+            }
+        });
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const issueSubjectContainers = document.querySelectorAll('.issue-subject-container');
+    
+            issueSubjectContainers.forEach(container => {
+                const shortenedSubject = container.querySelector('.shortened-subject');
+                const fullSubject = container.querySelector('.full-subject');
+                const moreLink = container.querySelector('.more-link');
+    
+                // Get the full subject text
+                const fullSubjectText = fullSubject.textContent.trim();
+    
+                // Split the full subject into words
+                const fullSubjectWords = fullSubjectText.split(/\s+/);
+    
+                // Number of words to show initially
+                const wordsToShow = 5;
+    
+                // Join the first 'wordsToShow' words and append '...' to create the shortened version
+                const shortenedText = fullSubjectWords.slice(0, wordsToShow).join(' ') + '...';
+    
+                // Set the shortened subject text
+                shortenedSubject.textContent = shortenedText;
+    
+                // Hide the full subject initially
+                fullSubject.style.display = 'none';
+    
+                // Event listener for the "More" link
+                moreLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+    
+                    // Toggle visibility of shortened and full subject
+                    if (shortenedSubject.style.display === 'none') {
+                        shortenedSubject.style.display = 'inline';
+                        fullSubject.style.display = 'none';
+                        moreLink.textContent = 'More';
+                    } else {
+                        shortenedSubject.style.display = 'none';
+                        fullSubject.style.display = 'inline';
+                        moreLink.textContent = 'Less';
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- script src="https://code.jquery.com/jquery-3.6.4.min.js"></script-->
+	
+    <!-- script>
+    $(document).ready(function () {
+        function filterSupport() {
+            var selectedSupport = $('#supportSearch').val().toLowerCase();
+    
+            console.log("Selected Support:", selectedSupport);
+    
+            $('#clientsTableBody tr').filter(function () {
+                var supportType = $(this).find('td:nth-child(3)').text().toLowerCase();
+                console.log("Row Support Type:", supportType);
+                $(this).toggle(supportType.indexOf(selectedSupport) > -1);
+            });
+        }
+    
+        function filterStatus() {
+            var selectedStatus = $('#satusSearch').val().toLowerCase();
+    
+            console.log("Selected Status:", selectedStatus);
+    
+            $('#clientsTableBody tr').filter(function () {
+                var status = $(this).find('td:nth-child(5)').text().toLowerCase();
+                console.log("Row Status:", status);
+                $(this).toggle(status.indexOf(selectedStatus) > -1);
+            });
+        }
+    
+        $('#supportSearch').on('input', function () {
+            filterSupport();
+        });
+    
+        $('#satusSearch').on('input', function () {
+            filterStatus();
+        });
+    });
+            
+    </script-->
+        
+    <!--  script>
+    $(document).ready(function () {
+     
+        // Function to filter the table based on the selected date range
+        function filterDateRange() {
+            var fromDate = new Date($('#fromDate').val()).getTime();
+            var toDate = new Date($('#toDate').val()).getTime();
+    
+            $('#clientsTableBody tr').filter(function () {
+                var invoiceDate = new Date($(this).find('td:nth-child(1)').text()).getTime();
+    
+                // Show the row if the invoice date is within the selected range
+                $(this).toggle(invoiceDate >= fromDate && invoiceDate <= toDate);
+            });
+        }
+    
+    
+        // Trigger the filter when the To Date input changes
+        $('#toDate').on('change', function () {
+            filterDateRange();
+        });
+    
+    });
+    </script-->
+    
+    
+    
+    <!-- script>
+    $(document).ready(function () {
+        // Attach a keyup event to the search input
+        $('#searchInput').keyup(function () {
+            // Get the value from the search input
+            var searchTerm = $(this).val().toLowerCase();
+    
+            // Filter the table rows based on the search term
+            $('#clientsTableBody tr').filter(function () {
+                var rowText = $(this).text().toLowerCase();
+                $(this).toggle(rowText.indexOf(searchTerm) > -1);
+            });
+        });
+    });
+    </script-->
+       
+    
+</body>
+</html>

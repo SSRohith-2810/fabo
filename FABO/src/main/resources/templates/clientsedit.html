@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            /* width: 100%;
+           
+            
+            display: flex;
+            flex-direction:column; */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.2)20%, rgba(0, 0, 0, 0.2)20%), url("/images/Desk-bg.jpg");
+            background-position: center; 
+            background-size: 100% 100%;
+            box-sizing: border-box;
+            /* justify-content: center;
+            align-items: center; */
+            height: 100vh;
+            
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .logo-section {
+            width: 10%;
+            height: 20%;
+            position:fixed;
+            left:3%;
+            top:3%; 
+        }
+
+        .logo-section img {
+            width: 65%;
+            height: 80%;
+            
+        }
+        .popup {
+    /* width:65%;
+    height:90%; */
+    background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    border: 1px solid white;
+    /* padding: 20px; */
+}
+.card {
+    /* height:100%; */
+}
+.wrapper {
+    /* max-width: 710px; */
+    /* width:100%;
+    height:100%; */
+    background: #ddd;
+    padding-top: 10px;
+    /* padding-left: 30px; */
+    padding-right: 30px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+.wrapper>.title {
+    /* font-size: 25px;
+    font-weight: 500; */
+    /* position: relative; */
+    color: #3d1b63;
+}
+
+.wrapper .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top:40px;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(135deg, #3d1b63, #ef4d79);
+}
+
+.wrapper form .user-detail {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; */
+    margin: 30px 20px 0;
+    color: #3d1b63;
+    /* font-size: large; */
+}
+form .user-detail .input-box {
+    /* margin-bottom: 15px; */
+    width: calc(100% / 3 - 30px);
+}
+
+select {
+    /* padding: 10px; */
+    /* width: 100%; */
+    /* font-size: 16px; */
+    /* outline: none;
+    border: 2px solid #ef4d79;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #ef4d79;
+    margin-top: 5px; */
+
+
+
+}
+
+/* select option {
+    padding: 8px;
+    outline: none;
+
+} */
+
+.user-detail .input-box input {
+    /* height: 35px;
+    width: 100%; */
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #3d1b63;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all .3s ease;
+
+}
+
+
+.user-detail .input-box textarea {
+    /* height: 100px; */
+    /* Set a fixed height for the textarea */
+    /* width: 180%; */
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #3d1b63;
+    /* padding-left: 15px; */
+    /* font-size: 14px; */
+    /* font-weight: 0; */
+    /* border-bottom-width: 2px; */
+    transition: all .3s ease;
+    overflow-y: auto;
+    /* Add vertical scroll if content exceeds the fixed height */
+    resize: none;
+    /* Disable resizing */
+
+}
+
+.user-detail .input-box textarea:focus {
+    border-color: #ef4d79;
+}
+
+.user-detail .input-box textarea::placeholder {
+    /* font-size: large; */
+    text-decoration: none;
+    /* padding-top: 8px; */
+
+}
+
+.user-detail .input-box input:focus,
+.user-detail .input-box input:valid {
+    border-color: #ef4d79;
+}
+
+
+.user-detail .input-box .details {
+    /* font-weight: 500; */
+    /* display: block; */
+    /* margin-bottom: 5px;
+    margin-left: 20px; */
+}
+
+form .button {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: right; */
+    /* width: 100%;
+    height: 45px; */
+    /* margin: 5px 0; */
+    /* margin-top: -10%; */
+    cursor: pointer;
+}
+
+
+
+form .button input {
+    /* display: flex;
+    justify-content: center; */
+    /* height: 100%;
+    width: 20%; */
+    color: #fff;
+    outline: none;
+    border: none;
+    /* font-size: 18px;
+    font-weight: 500; */
+    cursor: pointer;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #3d1b63, #ef4d79);
+    border: 2px solid white;
+    margin: 0 -15%;
+}
+.close-button {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%; */
+}
+
+.close-button button {
+    /* width: 100%;
+    height: 100%; */
+    background: linear-gradient(135deg, #3d1b63, #ef4d79);
+    border: 2px solid white;
+    color: white;
+    /* font-size: 18px;
+    font-weight: 500; */
+    cursor: pointer;
+    border-radius: 30px;
+    letter-spacing: 1px;
+}
+
+form .button .close-button button:hover {
+    background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+}
+
+form .button input:hover {
+    background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+} 
+
+.buttons{
+    margin-left:60%;
+    width:40%;
+    /* border: 2px solid; */
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    gap:20px;
+}
+.buttons button{
+    width:50%;
+    height:40px;
+    background: linear-gradient(135deg, #3d1b63, #ef4d79);
+    border: 2px solid white;
+    color: white;
+    font-size: 18px;
+    font-weight: 500; 
+    cursor: pointer;
+    border-radius: 30px;
+    letter-spacing: 1px;
+}
+
+.buttons button:hover {
+    background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+}
+
+.buttons a{
+text-decoration:none;
+color:white;
+}
+
+
+
+/* Media Query for Tablets */
+@media only screen and (max-width:900px){
+    form .user-detail .input-box {
+    /* margin-bottom: 15px; */
+    width: calc(100% / 1 - 30px);
+}
+.popup{
+    margin-top:30px !important;
+}
+.buttons{
+    margin-left:30% !important;
+}
+.buttons button{
+   width:200px !important;
+   height:60px !important;
+   padding-left: 10% !important;
+   padding-right: 10% !important;
+}
+.gmb{
+    margin-top: 2px;
+}
+   
+}
+
+
+
+
+</style>
+</head>
+<body class="container-fluid w-100  d-flex flex-column justify-content-center align-items-center">
+    <div class="logo-section">
+        <img th:src="@{/images/fabo.logo.png}" alt="Your Logo">
+    </div>
+    <div class="container popup p-3 w-75 h-80" id="addClientsPopup"> 
+        <div class="container card p-0 h-100">
+            <div class="container wrapper w-100 h-100">
+                <div class="title fs-4 fw-bold position-relative">Edit Client</div>
+               <form th:action="@{/clients/{Id}(Id=${client.Id})}" th:object="${client}" method="POST">
+                     <div class="container user-detail d-flex flex-wrap justify-content-between fs-large mb-3 fw-bold">
+                            <div class="input-box">
+                                <span class="details">Store Name <sup style="color:red;">*</sup> </span>
+                                <input type="text" class="w-100 h-50 p-2" id="storeName" th:field="*{storeName}" placeholder="Enter Store Name" required readonly>
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Store Code <sup style="color:red;">*</sup> </span>
+                                <input type="text"  class="w-100 h-50  p-2" th:field="*{storeCode}" placeholder="Enter Store Code" required readonly>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Owner Name <sup style="color:red;">*</sup> </span>
+                                <input type="text"  class="w-100 h-50  p-2" th:field="*{ownerName}"  placeholder="Enter Owner Name" required >
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details" id="mand">E-Mail <sup style="color:red;">*</sup> </span>
+                                <input type="email"  class="w-100 h-50  p-2" th:field="*{email}" placeholder="Enter E-Mail" required >
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Owner Contact <sup style="color:red;">*</sup> </span>
+                                <input type="tel"  class="w-100 h-50  p-2" th:field="*{ownerContact}" pattern="[6-9]{1}[0-9]{9}" placeholder="Enter Owner Contact Number" oninput="validateNumericInput(this)" required>
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Store Contact <sup style="color:red;">*</sup> </span>
+                                <input type="tel"  class="w-100 h-50  p-2" th:field="*{storeContact}" pattern="[6-9]{1}[0-9]{9}" placeholder="Enter Store Contact Number" oninput="validateNumericInput(this)" required>
+                            </div> 
+
+                            <div class="input-box">
+                                <span class="details">GST Number</span>
+                                <input type="tel"  class="w-100 h-50  p-2" th:field="*{gstNo}" placeholder="Enter GST Number">
+                            </div>
+                            
+                           <div class="input-box">
+							    <span class="details">State <sup style="color:red;">*</sup> </span>
+							    <input id="state" list="state-list" class="form-control state-dropdown w-100 h-50 p-2" onchange="loadCities()" th:field="*{state}" type="text" placeholder="Enter State" required>
+							    <datalist id="state-list"></datalist>
+							</div>
+
+                            <div class="input-box">
+                                <span class="details">City <sup style="color:red;">*</sup> </span>
+                                <input type="text" list="city-list" class="form-control city-dropdown w-100 h-50  p-2" id="city" th:field="*{city}" placeholder="Enter City" required >
+                                <datalist id="city-list">
+                                   
+                                </datalist>
+                            </div>
+
+
+                            <div class="input-box">
+                                <label for="details" class="details">Full Address <sup style="color:red;">*</sup> </label>
+                                 <textarea id="fullAddress"  class="w-100 h-100  p-2"  th:field="*{fullAddress}" name="fullAddress" placeholder="Enter Full Address" required></textarea>
+                            </div>
+
+                            <div class="input-box gmb">
+                                <span class="details">GMB Profile Link</span>
+                                <input type="text"  class="w-100 h-50  p-2" th:field="*{gmbProfileLink}" placeholder="Enter GMB Profile Link">
+                            </div>
+
+                        </div>
+
+                        <div class="buttons">
+                            <!-- <input type="submit" value="Submit" class="submit w-25 p-2"> -->
+                            <button>Submit</button>
+                            <!-- <div class="close-button d-flex flex-row justify-content-end w-50"> -->
+                                 <button onclick="window.location.href='/faboclients'" type="button">Close</button>
+                            <!-- </div> -->
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+	<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+var config = {
+    cUrl: 'https://api.countrystatecity.in/v1',
+    ckey: 'NHhvOEcyWk50N2Vna3VFTE00bFp3MjFKR0ZEOUhkZlg4RTk1MlJlaA==',
+    defaultCountryCode: 'IN' // Setting default country code to India
+};
+
+var stateInput = document.querySelector('.state-dropdown');
+var cityInput = document.querySelector('.city-dropdown');
+
+function loadStates() {
+    const selectedCountryCode = config.defaultCountryCode; // Use the default country code for India
+
+    fetch(`${config.cUrl}/countries/${selectedCountryCode}/states`, { headers: { "X-CSCAPI-KEY": config.ckey } })
+        .then(response => response.json())
+        .then(data => {
+            // Clear previous options
+            document.getElementById('state-list').innerHTML = '';
+            data.forEach(state => {
+                const option = document.createElement('option');
+                option.value = state.name;
+                document.getElementById('state-list').appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading states:', error));
+}
+
+function loadCities() {
+    const selectedCountryCode = config.defaultCountryCode;
+    const selectedStateName = stateInput.value;
+
+    fetch(`${config.cUrl}/countries/${selectedCountryCode}/states`, { headers: { "X-CSCAPI-KEY": config.ckey } })
+        .then(response => response.json())
+        .then(data => {
+            const selectedState = data.find(state => state.name === selectedStateName);
+            if (selectedState) {
+                const selectedStateCode = selectedState.iso2;
+                fetch(`${config.cUrl}/countries/${selectedCountryCode}/states/${selectedStateCode}/cities`, { headers: { "X-CSCAPI-KEY": config.ckey } })
+                    .then(response => response.json())
+                    .then(cityData => {
+                        document.getElementById('city-list').innerHTML = '';
+                        cityData.forEach(city => {
+                            const option = document.createElement('option');
+                            option.value = city.name;
+                            document.getElementById('city-list').appendChild(option);
+                        });
+                        cityInput.disabled = false;
+                    })
+                    .catch(error => console.error('Error loading cities:', error));
+            }
+        })
+        .catch(error => console.error('Error loading states:', error));
+}
+
+window.onload = function() {
+    loadStates();
+};
+</script>
+<script>
+function validateNumericInput(input) {
+    // Remove non-numeric characters from the input value
+    let numericValue = input.value.replace(/\D/g, '');
+
+    // Limit the numeric value to 10 characters
+    numericValue = numericValue.slice(0, 10);
+
+    // Update the input value with the processed numeric value
+    input.value = numericValue;
+}
+
+</script>
+
+<script th:inline="javascript">
+    function clearErrorMessage() {
+        var errorMessage = document.getElementById('error-message');
+        errorMessage.innerText = ''; // Clear the error message
+    }
+</script>
+
+</body>
+
+</html>

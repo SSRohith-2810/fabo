@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/supportadminviewpop.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-page">
+        <!-- Side bar -->  
+       
+        <div class="section">
+            <div class="admin-details">
+                <div class="title">
+                    <h2>Store Contact Info</h2>
+                </div>
+                <div class="form">
+                    <div class="form-dts">
+                                 <span><b>Store Name :</b></span>
+        <span th:text="${client.storeName}"></span><br>
+
+        <span><b>Store Code :</b></span>
+        <span th:text="${client.storeCode}"></span><br>
+
+        <span><b>Store Phone :</b></span>
+        <span th:text="${client.storeContact}"></span><br>
+
+        <span><b>State:</b></span>
+        <span th:text="${client.state}"></span><br>
+
+        <span><b>City:</b></span>
+        <span th:text="${client.city}"></span><br>      
+                    </div>
+                    
+                    <li><a th:href="@{/viewproduct}">Close</a></li>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>

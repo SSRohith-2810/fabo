@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/clientsview.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-page">
+        <!-- Side bar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <img th:src="@{/images/fabo.logo.png}" alt="Your Logo">
+            </div>
+        </div>
+        <div class="section">
+            <div class="admin-details">
+                <div class="title">
+                    <h2>Client Details</h2>
+                </div>
+                <div class="form">
+                    <div class="form-dts">
+                        <span><b>Store Name : </b><span th:text="${client.storeName}"></span></span><br>
+                        <span><b>Store Code : </b><span th:text="${client.storeCode}"></span></span><br>
+                     	<span><b>Owner Name : </b><span th:text="${client.ownerName}"></span></span><br>
+                        <span><b>E-Mail : </b><span th:text="${client.email}"></span></span><br>
+                        <span><b>Owner Phone : </b><span th:text="${client.ownerContact}"></span></span><br>
+                        <span><b>Store Phone : </b><span th:text="${client.storeContact}"></span></span><br>
+                        <span><b>GST Number : </b><span th:text="${client.gstNo}"></span></span><br>
+                        <span><b>City : </b><span th:text="${client.city}"></span></span><br>
+                        <span><b>State : </b><span th:text="${client.state}"></span></span><br>
+                        <span><b>Full Address : </b><span th:text="${client.fullAddress}"></span></span><br>
+                        <span><b>GMB Profile Link : </b><span th:text="${client.gmbProfileLink}"></span></span><br>
+                    </div>
+                    
+                    <li><a th:href="@{/faboclients}">Close</a></li>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>

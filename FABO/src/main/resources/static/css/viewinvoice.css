@@ -1,0 +1,398 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.main-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    background:linear-gradient(to top, rgba(0,0,0,0.2)20%,rgba(0,0,0,0.2)20%), url(Desk-bg.jpg);
+    background-position: center;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+
+
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+ 
+}
+
+.tableform {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    /* height: 80%; Remove fixed height */
+    background: linear-gradient(-105deg, #3d1b63, #ef4d79);
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.table-container {
+    max-height: 60vh; /* Set the max height for the scrollable area */
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+   
+}
+
+.title h2{
+    margin: 0 2% ;
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    color: #fff;
+}
+
+.title h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 30px;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(150deg, #3d1b63, #ef4d79);
+}
+
+.bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    margin: 10px;
+
+}
+
+.filters{
+    flex-direction: row;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 98%;
+    height: 100%;
+    
+}
+
+
+
+.close-button{
+    display: flex;
+    justify-content: right;
+    margin: 0 1%;
+    padding: 5px;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+}
+
+.close-button li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 10%;
+    padding: 5px 10px;
+}
+
+.close-button li a{
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+}
+.close-button li:hover{
+    background-color: red;
+    border-radius: 5px;
+    border: 2px solid white;
+    background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+    transition: 0s ease-in-out;
+}
+
+.fil-2 label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 16px;
+    color: #fff;
+}
+
+.fil-2 select {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.fil-1 label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.fil-1 select {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.fil-3 label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.fil-3 select {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid #ef4d79;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #ef4d79;
+    margin:0 10px;
+
+}
+
+select option {
+    padding: 8px;
+    outline: none;
+
+}
+
+
+
+
+select::-ms-expand {
+    display: none;
+}
+
+
+.search-container {
+    position: relative;
+    width: 200px;
+    margin:0 10px;
+    margin-top: 8px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 9px;
+    border-radius: 5px;
+    padding-left: 40px; /* space for the search icon */
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid #ef4d79;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ef4d79;
+}
+
+
+
+thead {
+    background-color: #3d1b63;
+    color: #fff;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+
+tbody tr {
+    border-bottom: 1px solid #fff;
+    background-color: #ccc;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    border-right: 1px solid #fff;
+}
+
+tbody td:last-child {
+    border-right: none;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+    transition: 0.1s ease-in-out;
+    
+}
+
+.action-icon {
+    font-size: 15px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+td li {
+    display: inline;
+}
+
+.table-container li a{
+    text-decoration: none;
+}
+
+#deleteConfirmationPopup {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 45%;
+    left: 85%;
+
+}
+
+#deleteConfirmationPopup .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    
+   
+}
+
+#deleteConfirmationPopup .card .wrapper {
+    border:2px solid #3d1b63;
+    background-color: #ddd;
+    width: 50%;
+    padding: 25px;
+}
+
+#deleteConfirmationPopup p {
+    
+    font-size: larger;
+    color: #ef4d79;
+    text-align: center;
+}
+
+#deleteConfirmationPopup .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+}
+
+#deleteConfirmationPopup .button-container button {
+    
+   
+    text-align: center;
+    color: white;
+    border:2px solid white;
+    background:linear-gradient(-135deg, #3d1b63, #ef4d79);
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+
+#deleteConfirmationPopup .button-container button:hover{
+ background:linear-gradient( 135deg, #3d1b63, #ef4d79);
+
+}
+
+#deleteConfirmationPopup .title {
+    text-decoration: none;
+
+}
+
+.table-container {
+    max-height: 400px; /* Set the max height for the scrollable area */
+    overflow-y: auto;
+}
+
+
+thead {
+    background-color: #3d1b63;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+/* Additional styles for better appearance */
+.table-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #3d1b63;
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background-color: #ccc;
+}
+
+
+
+
+
+
+

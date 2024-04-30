@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/addproductadmin.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.1)20%, rgba(0, 0, 0, 0.1)20%), url("/images/Desk-bg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Ensures the background image remains stationary */
+        }
+
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 120px;
+            height: auto;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #fff;
+            background-color: rgb(232, 232, 232);
+            /* Add a semi-transparent background color to improve readability */
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 24px;
+            background: linear-gradient(135deg, #ef3d79, #3d1b63);
+            background-position: bottom;
+            background-size: 100% 5px;
+            background-repeat: no-repeat;
+            padding-bottom: 5px;
+            color: #3d1b63;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #3d1b63;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input[type="date"] {
+            appearance: none;
+            padding-right: 30px;
+
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .file-list {
+            margin-top: 10px;
+        }
+
+        .file-item {
+            margin-top: 5px;
+        }
+
+        .file-item button {
+            margin-left: 10px;
+            background: linear-gradient(135deg, #ef3d79, #3d1b63);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 2px solid #fff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .button,
+        button[type="button"] {
+            background: linear-gradient(135deg, #ef3d79, #3d1b63);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-left: 10px;
+            border: 2px solid #fff;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        button:hover,.button:hover {
+            background: linear-gradient(-135deg, #ef3d79, #3d1b63);
+            transition: 0.1s ease-in-out;
+            scale: 1.05;
+        }
+
+      
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <title>FABO</title>
+</head>
+
+<body>
+    <form id="invoiceForm" th:action="@{/createNewItem}" th:object="${cartItems}" method="post"
+        enctype="multipart/form-data">
+        <h1>Add Product Request</h1>
+        <div class="input-box">
+            <label for="storeDropdown">Product Title</label>
+            <input type="text" id="productTitle" name="productTitle" th:filed="*{productTitle}" placeholder="Product Title">
+        </div>
+
+        <label for="productdropdown">Product Type </label>
+        <input type="text" id="product-request-type" name="productRequestType" list="productdropdown">
+        <datalist id="productdropdown">
+            <!-- Options for product request types here -->
+            <option value="Chemicals">Chemicals</option>
+            <option value="Packing Covers">Packing Covers</option>
+            <option value="Collar Cuffs">Collar Cuffs</option>
+            <option value="Pins">Pins</option>
+            <!-- Add more options as needed -->
+        </datalist>
+
+        <div class="input-box">
+            <label for="storeDropdown">Product Price</label>
+            <input type="text" id="productPrice" name="productPrice" th:field="*{productPrice}" placeholder="Product Price">
+        </div>
+        <label for="issue-description">Description</label>
+        <textarea id="Description" name="Description" rows="4" th:field="*{description}"
+            placeholder="Enter Description" required></textarea>
+
+        <label>Upload Images</label>
+        <div class="">
+            <input type="file" name="file" style="background-color: #fff;">
+        </div>
+        <div class="file-list"></div>
+        <div class="buttons">
+            <button type="submit" class="button">Submit</button>
+            <button onclick="window.location.href='/adminshome'" type="button">Close</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

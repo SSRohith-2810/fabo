@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+   body {
+      background: linear-gradient(135deg, #ef4d79, #3d1b63);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2%;
+      flex-direction: column;
+      color: white; /* Add consistent text color */
+    }
+    body::-webkit-scrollbar{
+      display: none;
+    }
+
+    .table1,
+    .table2 {
+      width: 90%;
+      margin-bottom: 20px; /* Add margin between tables */
+    }
+
+    .applycoupon {
+      border: 2px solid #fff;
+      background: linear-gradient(135deg, #3d1b63, #ef4d79);
+      color: white;
+      border-radius: 10px;
+      font-weight: bold;
+      padding: 10px;
+      display: block; /* Make the link a block element */
+      margin: 20px auto; /* Center the link */
+      max-width: 300px; /* Limit the width */
+      text-align: center; /* Center the text */
+      text-decoration: none; /* Remove default underline */
+    }
+
+    .applycoupon:hover {
+      background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+    }
+
+    .cancel-btn {
+      cursor: pointer;
+      font-size: 20px;
+      color: red;
+    }
+
+    .cancel-btn:hover {
+      color: #ff9999; /* Light red on hover */
+    }
+
+    
+    .btn1
+        {
+            border: 2px solid #fff;
+            background: linear-gradient(135deg, #3d1b63, #ef4d79);
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .btn1:hover {
+            border: 2px solid #fff;
+            background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+            color: white;
+            border-radius: 10px;
+        }
+        .close{
+          width:90%;
+        }
+  </style>
+</head>
+
+<body>
+
+ <div class="d-flex justify-content-end mb-3 close">
+  <a class="nav-link btn1 me-2 p-2" href="">Close</a>
+ </div>
+  <table class="table table1">
+    <thead>
+      <tr class="a">
+        <th scope="col" class="text-center align-middle" style="color:#ef4d79;"></th>
+        <th scope="col" class="text-center align-middle" style="color:#ef4d79;"></th>
+        <th scope="col" class="text-center align-middle" style="color:#ef4d79;">Product</th>
+        <th scope="col" class="text-center align-middle" style="color:#ef4d79;">Price</th>
+        <th scope="col" class="text-center align-middle" style="color:#ef4d79;">Qantity</th>
+        <th scope="col" class="text-center align-middle" style="color:#ef4d79;">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Cart items will be dynamically added here using JavaScript -->
+    </tbody>
+  </table>
+
+  <table class="table table2">
+    <thead>
+      <tr>
+        <th style="color:#ef4d79;font-size: larger;">Cart Totals</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Cart totals will be dynamically added here using JavaScript -->
+    </tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var table1 = document.querySelector('.table1 tbody');
+      var table2 = document.querySelector('.table2 tbody');
+
+      // Retrieve the stored cart data from localStorage
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Populate table1 with cart items
+      cart.forEach(function (productDetails, index) {
+        var row = table1.insertRow(index);
+        // Add cells with product details
+        // (you may customize this based on your actual product data structure)
+        row.insertCell(0).innerHTML = '<i class="fa-regular fa-circle-xmark cancel-btn" style="color:red;cursor: pointer;font-size: 20px;" onclick="deleteRow(this)"></i>';
+        row.insertCell(1).innerHTML = '<img src="' + productDetails.image_url + '" alt="" style="width:200px;height:100px;">';
+        row.insertCell(2).innerHTML = productDetails.product_name;
+        row.insertCell(3).innerHTML = '₹ ' + productDetails.price;
+        row.insertCell(4).innerHTML = '<input type="number" style="width:70px;" value="' + productDetails.quantity + '" oninput="checkNonNegative(this);">';
+        row.insertCell(5).innerHTML = '₹ ' + productDetails.totalCost;
+      });
+
+      // Populate table2 with cart totals
+      var totalSubtotal = cart.reduce((total, item) => total + item.totalCost, 0);
+      var totalGST = 0.1 * totalSubtotal; // Assuming 10% GST
+      var totalAmount = totalSubtotal + totalGST;
+
+      table2.insertRow(0).innerHTML = '<td>Subtotal</td><td>₹ ' + numberWithCommas(totalSubtotal) + '</td>';
+      table2.insertRow(1).innerHTML = '<td>Shipping</td><td>Shipping to be paid separately shipping to telangana</td>';
+      table2.insertRow(2).innerHTML = '<td>GST</td><td>₹ ' + numberWithCommas(totalGST) + '</td>';
+      table2.insertRow(3).innerHTML = '<td>Total</td><td>₹ ' + numberWithCommas(totalAmount) + '</td>';
+      table2.insertRow(4).innerHTML = '<td colspan="2" class="text-center"><a href="checkout.html" class="applycoupon" style="width:300px;font-size: larger;text-decoration: none;">Proceed to Checkout</a></td>';
+    });
+
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function deleteRow(icon) {
+      var row = icon.closest('tr');
+      row.remove();
+    }
+
+    function checkNonNegative(input) {
+      if (input.value < 0) {
+        input.value = 0;
+      }
+    }
+  </script>
+</body>
+
+</html>

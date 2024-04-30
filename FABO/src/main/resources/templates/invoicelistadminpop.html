@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width:100vw;
+            height:100vh;
+            /* background-color: #ef4d79; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    .overlay {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(-135deg, #3d1b63, #ef4d79);
+    z-index: 999;
+}
+
+.comment-popup {
+    /* display: none; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background:linear-gradient( 135deg, #3d1b63, #ef4d79);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.comment-popup h2 {
+    font-size: 25px;
+    text-decoration: underline;
+    margin-bottom: 15px;
+    margin-top: 0;
+    color: #fff;
+}
+
+.comment-popup textarea {
+    width: 100%;
+    height: 150px;
+    padding: 8px;
+    margin-bottom: 15px;
+    resize: none;
+    background-color: #ddd;
+    border: 2px solid white;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.comment-popup div {
+    margin-bottom: 10px;
+}
+
+.comment-popup label {
+    margin-left: 5px;
+    color: #fff;
+}
+
+.comment-popup button {
+    background:linear-gradient( 135deg, #3d1b63, #ef4d79);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin-right: 10px;
+    float: right;
+    font-size: 15px;
+}
+
+.comment-popup button:last-child {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 5px;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/saveCommentToClient}"  method="POST">
+	 <input type="hidden" name="id" th:value="${invoice.id}" />
+    <div class="overlay" id="overlay"></div>
+    <div class="comment-popup" id="commentPopup">
+    <h2>Add Comment</h2>
+    <div>
+        <input type="radio" id="clientVisibleYes" name="clientVisible" value="Yes" />
+        <label for="clientVisibleYes">Internal Comments</label>
+        <input type="radio" id="clientVisibleNo" name="clientVisible" value="No" />
+        <label for="clientVisibleNo">External Comments</label>
+    </div>
+    <textarea id="commentText" name="commentText"  placeholder="Enter your comment here"></textarea>
+
+    <div>
+        <input type="radio" id="markAsClosed" name="requestStatus" value = "Paid"/>
+        <label for="markAspaid">Mark This Invoice as Paid.</label>
+    </div>
+
+    <div>
+        <input type="radio" id="markAsInProgress" name="requestStatus" value = "Unpaid"/>
+        <label for="markAsunpaid">Mark This Invoice as Pending.</label>
+    </div>
+
+   <button>Send</button>
+    <a th:href="@{/viewinvoice}"><button>Close</button></a>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,249 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.main-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    background:linear-gradient(to top, rgba(0,0,0,0.2)20%,rgba(0,0,0,0.2)20%), url("/images/suresh.png");
+    background-position: center;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+
+.sidebar {
+    width: 20%;
+    height: 100vh;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-section {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: top;
+    margin-bottom: 10%;
+}
+
+.logo-section img {
+    width: 65%;
+    height: 80%;
+}
+
+.sbbuttons {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+ .sbbuttons > button {
+    width: 90%;
+    padding: 10px;
+    margin: 5% 0;
+    margin-bottom: 15px;   
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: large;  
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sbbuttons button a{
+    text-decoration: none;
+    color: white;
+}
+
+.sbbuttons>button:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    scale: 1.05;
+    transition: 0.1s ease-in-out;
+}
+
+
+.submenu {
+    list-style-type: none;
+    padding: 0;
+    display: none;
+    margin: 0;
+    width: 50%;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.submenu li  {
+    padding: 8px;
+    background: linear-gradient(135deg, #ef4d79, #3d1b63);
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.submenu li a{
+    color: white;
+    text-decoration: none;
+     width: 100%;
+}
+
+.submenu li:hover {
+    background: linear-gradient(-135deg, #ef4d79, #3d1b63);
+    /* letter-spacing: 2px; */
+    scale: 1.05;
+    transition: 0.1s ease-in-out;
+}
+
+.submenu.show {
+    display: block;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 100vh;
+}
+
+
+.dash-btns{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.dash-btns li{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    text-align: center;
+    width: 20%;
+    /* height: 0%; */
+    
+}
+
+.dash-btns li a{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #3d1b63, #ef4d79);
+    border: 2px solid white;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    
+}
+
+.dash-btns li a:hover{
+    background: linear-gradient(-135deg, #3d1b63, #ef4d79);
+    transition: 0.1s ease-in-out;
+
+}
+
+#logout{
+  
+   font-size: large;
+   padding: 15px 0;
+}
+#password{
+  
+   font-size: large;
+   padding: 15px 0;
+}
+.greeting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+    width: 65%;
+    height: 80%;
+    cursor: pointer;
+}
+
+.greeting > .faboimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+.greeting > .faboimg > img{
+    width: 300px;
+    height: 300px;
+    margin-top: 30%;
+}
+
+.greeting > .text {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 50%;
+   text-align: center;
+   margin-bottom: 20%;
+}
+
+.greeting > .text >h3{
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-size: 80px;
+}
+
+.greeting:hover .faboimg > img {
+    transform: translateX(-220px);
+    transition: 0.9s ease-in-out;
+}
+
+.greeting:not(:hover) .faboimg > img {
+    transform: translateX(0);
+    transition: 0.9s ease-in-out;
+}
+
+.greeting:hover h3 {
+    transform: translateX(150px);
+    transition: 0.9s ease-in-out;
+}
+
+.greeting:not(:hover) h3 {
+    transform: translateX(0);
+    transition: 0.9s ease-in-out;
+}

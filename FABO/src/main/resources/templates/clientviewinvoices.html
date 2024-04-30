@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="clientviewinvoices.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+    <title>FABO</title>
+</head>
+<body>
+    <div class="main-page">
+      
+
+
+        <div class="section">
+            <div class="tableform">
+                <div class="title">
+                    <h2>Invoices List</h2>
+                    <div class="close-button">
+                        <li><a href="home.html">X</a></li>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="filters">
+
+                        <div class="fil-3">
+                            <label for="invoicedropdown">Select Invoice Type:</label>
+                            <select id="invoicedropdown" required>
+                                <option value="Royalty">Royalty</option>
+                                <option value="Chemicals">Chemicals</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+
+
+                        <div class="search-container">
+                            <div class="search-icon">
+                              <i class="fas fa-search"></i>
+                            </div>
+                            <input type="text" class="search-bar" placeholder="Search">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Store Code</th>
+                                <th>Store Name</th>
+                                <th>Invoice Type</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsTableBody">
+                          
+                            <tr>
+                                <td>121212</td>
+                                <td>Fabo Kukatpally</td>
+                                <td>Royality</td>
+                                <td>20000/-</td>
+                                <td>
+                                    <li><a href="clientinvoiceview.html"><i class="fa-regular fa-eye"></i></a></li>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>121212</td>
+                                <td>Fabo Kukatpally</td>
+                                <td>Royality</td>
+                                <td>20000/-</td>
+                                <td>
+                                    <li><a href="clientinvoiceview.html"><i class="fa-regular fa-eye"></i></a></li>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>121212</td>
+                                <td>Fabo Kukatpally</td>
+                                <td>Royality</td>
+                                <td>20000/-</td>
+                                <td>
+                                    <li><a href="clientinvoiceview.html"><i class="fa-regular fa-eye"></i></a></li>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>121212</td>
+                                <td>Fabo Kukatpally</td>
+                                <td>Royality</td>
+                                <td>20000/-</td>
+                                <td>
+                                    <li><a href="clientinvoiceview.html"><i class="fa-regular fa-eye"></i></a></li>
+                                </td>
+                            </tr>
+
+                            
+
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openPopup(popupId) {
+            var popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = "block";
+            }
+        }
+    
+        function showDeleteConfirmationPopup() {
+            var deleteConfirmationPopup = document.getElementById("deleteConfirmationPopup");
+            deleteConfirmationPopup.style.display = "block";
+            document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+        }
+    
+        function cancelDelete() {
+            closeDeleteConfirmationPopup();
+        }
+    
+        function closeDeleteConfirmationPopup() {
+            var deleteConfirmationPopup = document.getElementById("deleteConfirmationPopup");
+            deleteConfirmationPopup.style.display = "none";
+            document.body.style.backgroundColor = "";
+        }
+    
+        
+    </script>
+</body>
+</html>
